@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo killall vpnc
+sleep 3
+sudo cp resolv.conf /etc/resolv.conf

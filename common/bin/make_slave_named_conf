@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+server_ip = ARGV[0]
+server_ip ||= '67.222.146.70'
+
+named_conf_contents = STDIN.read
+
+ZONE_REGEX        = %r{\A(.*?)(zone[^\}]*\})(.*)\Z}m
+#ZONE_TYPE_REGEX   = %r{type\s+(\S+)\s*;}
+ZONE_TYPE_REGEX   = %r{type\s+(\S+)}
+ZONE_FILE_REGEX   = %r{file\s+"(\S+)"}
+ZONE_DOMAIN_REGEX = %r{zone.*\s+"(\S+)"}
+ZONE_NEEDS_SLAVE  = %r{var/named}
+
+while match = named_conf_contents.match(ZONE_REGEX)
+	named_conf_contents = match[3]
+	zone = match[2]
+
+	zone_type = zone.match(ZONE_TYPE_REGEX)[1]
+	zone_type.sub!(';', '')
+
+	zone_file = zone.match(ZONE_FILE_REGEX)[1]
+
+	zone_domain = zone.match(ZONE_DOMAIN_REGEX)[1]
+
+	if zone_file.match(ZONE_NEEDS_SLAVE)
+		puts "\nzone \"#{zone_domain}\" {\n\ttype slave;\n\tfile \"#{zone_file}\";\n\tmasters {#{server_ip};};\n};"
+	end
+end

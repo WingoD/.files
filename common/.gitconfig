@@ -1,0 +1,43 @@
+[user]
+	name = Wayne Walker
+	email = wwalker@indeed.com
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[core]
+	sharedRepository = true
+	preloadindex = true
+	editor = vim
+	excludesfile = ~/env/etc/git/gitignore_global
+[receive]
+	denyCurrentBranch = ignore
+[diff]
+	noprefix = true
+	tool = vimdiff
+[alias]
+	tagcommit = !sh -c 'git rev-list $0 | head -n 1'
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+	who = shortlog -s --
+[github]
+	user = wwalker
+[push]
+  default = current
+[pull]
+  rebase = true
+[pager]
+	diff =
+[pack]
+	windowMemory = 3g
+[merge]
+	tool = vimdiff
+[include]
+	path = ~/env/etc/git/aliases
+	path = ~/env/etc/git/general-config

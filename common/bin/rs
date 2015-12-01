@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while ! ssh $*
+do
+	sleep 1
+done

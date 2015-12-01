@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in mexec1 mexec2
+do
+  echo tst-$i
+  ssh tst-$i 'pgrep -f ^/usr/local/bin/consul-template' | wc -l
+done

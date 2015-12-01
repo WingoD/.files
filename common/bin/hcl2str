@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# hcl.str reads in an hcl (hashicorp config language) script and turns it into a suitably escaped single string to include in a json argument
+
+grep . | grep -vP '^\s*$' | grep -Pv '^\s*#' | perl -p -e 'chomp;s/}/ } \\n /g;s/  */ /g; s/"/\\"/g'

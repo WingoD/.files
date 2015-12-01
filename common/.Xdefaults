@@ -1,0 +1,50 @@
+xterm*utf8: 1
+*ttyModes: erase ^?
+XTerm*cursorBlink: True
+!XTerm*font: -adobe-courier-medium-r-normal--20-140-100-100-m-110-iso8859-1
+!XTerm*font1: -adobe-courier-medium-r-normal--12-120-75-75-m-70-iso8859-1
+!XTerm*font2: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1
+!XTerm*font3: -adobe-courier-medium-r-normal--17-120-100-100-m-100-iso8859-1
+!XTerm*font4: -adobe-courier-medium-r-normal--20-140-100-100-m-110-iso8859-1
+!XTerm*font5: -adobe-courier-medium-r-normal--25-180-100-100-m-150-iso8859-1
+!XTerm*font6: -adobe-courier-medium-r-normal--34-240-100-100-m-200-iso8859-1
+!XTerm*faceName: Bitstream Vera Sans Mono
+XTerm*faceName: DejaVu Sans Mono
+XTerm*faceSize: 15
+XTerm*faceSize1: 8
+XTerm*faceSize2: 10
+XTerm*faceSize3: 12
+XTerm*faceSize4: 15
+XTerm*faceSize5: 16
+XTerm*faceSize6: 18
+!XTerm*font: 10x20
+XTerm*foreground: white
+XTerm*background: black
+XTerm*VT100*geometry: 81x21
+!XTerm*maximized: true
+XTerm*PopOnBell: False
+XTerm*loginShell: True
+XTerm*scrollBar: True
+XTerm*altSendsEscape: True
+XTerm*saveLines: 10000
+fluxbox*font: 10x20
+XTerm*highlightSelection: true
+XTerm*metaSendsEscape:	True
+*VT100*translations:    #override \n\
+	<Btn4Down>,<Btn4Up>: string("") \n\
+	<Btn5Down>,<Btn5Up>: string("") \n\
+	Ctrl<Key>=: larger-vt-font() \n\
+	Ctrl<Key>-: smaller-vt-font()
+
+URxvt.perl-ext-common: default,font-size
+URxvt.keysym.C-1:   font-size:decrease
+URxvt.keysym.C-2:   font-size:increase
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.perl-lib: /usr/lib/urxvt/perl:/home/wwalker/bin
+URxvt.font:	xft:DejaVu Sans Mono:pixelsize=15
+URxvt.foreground: white
+URxvt.background: black
+URxvt.cursorColor: gray
+URxvt.cutchars: "\\`\"'%&()*,.;<>@[]{|}/-:"
+URxvt.tripleclickwords: False

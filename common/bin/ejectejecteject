@@ -1,0 +1,27 @@
+#!/bin/bash
+
+killall pidgin
+killall chrome
+killall firefox
+killall skype
+killall -INT pidgin
+killall -INT chrome
+killall -INT firefox
+killall -INT skype
+killall -TERM pidgin
+killall -TERM chrome
+killall -TERM firefox
+killall -TERM skype
+killall -HUP pidgin
+killall -HUP chrome
+killall -HUP firefox
+killall -HUP skype
+killall -QUIT pidgin
+killall -QUIT chrome
+killall -QUIT firefox
+killall -QUIT skype
+sleep 0.2
+killall -KILL pidgin
+killall -KILL chrome
+killall -KILL firefox
+killall -KILL skype

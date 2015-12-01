@@ -1,0 +1,7 @@
+lh
+bash:"bash --login\n"
+tst-mcontrol1:"ssh -t tst-mcontrol1 'tmux attach || tmux'\n"
+tst-mcontrol2:"ssh -t tst-mcontrol2 'tmux attach || tmux'\n"
+tst-mcontrol3:"ssh -t tst-mcontrol3 'tmux attach || tmux'\n"
+tst-mexec1:"ssh -t tst-mexec1 'tmux attach || tmux'\n"
+tst-mexec2:"ssh -t tst-mexec2 'tmux attach || tmux'\n"

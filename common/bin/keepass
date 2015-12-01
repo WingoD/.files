@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/KeePass
+mkdir -p ~/logs
+mono KeePass.exe > ~/logs/KeePass.log 2>&1 &

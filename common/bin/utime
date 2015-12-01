@@ -1,0 +1,7 @@
+#!/usr/bin/env perl
+
+if ($ARGV[0]) {
+  print scalar(localtime($ARGV[0])), "\n";
+} else {
+  print time(), "\n";
+}

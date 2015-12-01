@@ -1,0 +1,142 @@
+HISTCONTROL=ignoreboth
+HISTSIZE=100000
+HISTFILESIZE=100000
+HISTTIMEFORMAT='%F %T - '
+
+if [[ -f $HOME/.bashrc.d/functions.sh ]]
+then
+  . $HOME/.bashrc.d/functions.sh
+fi
+
+set -o physical
+#set -o noclobber
+
+TZ=CST6CDT
+TZ=America/Los_Angeles
+TZ=America/Chicago
+export TZ
+
+export LC_COLLATE=C
+
+if which vim > /dev/null 2>&1
+then
+	VISUAL=vim
+	EDITOR=vim
+else
+	VISUAL=vi
+	EDITOR=vi
+fi
+export VISUAL
+export EDITOR
+TERMINAL=urxvt256c
+export TERMINAL
+
+# need to source this before I rewrite pushd
+optionally_source $HOME/.rvm/scripts/rvm
+
+# source any *.sh files in ~/.bashrc.d
+shopt -s nullglob
+for i in ~/.bashrc.d/*.sh
+do
+  . $i
+done
+shopt -u nullglob
+
+umask 0022
+
+optionally_source $HOME/.bashrc.custom
+
+# Set up X Window
+if [[ -f ~/.Xdefaults ]]
+then
+  if [[ -n "$DISPLAY" ]]
+  then
+    echo > /dev/null
+    xrdb -m ~/.Xdefaults > /dev/null 2>&1
+  fi
+fi
+
+optionally_source $HOME/.bashrc.local.env
+optionally_source /usr/local/share/bash-completion/bash_completion
+optionally_source /opt/local/etc/profile.d/bash_completion.sh
+
+# Source local definitions
+optionally_source $HOME/.bashrc.local.`hostname` $HOME/.bashrc.local.`hostname | awk -F . '{print $1}'`
+
+optionally_pathmunge $HOME/ibin
+optionally_pathmunge /opt/depot/ruby-*/bin
+optionally_pathmunge /usr/local/aws/bin
+optionally_pathmunge $HOME/JetBrains/RubyMine-7.1.4/bin
+
+# TODO look for this
+complete -C  /usr/bin/aws_completer aws
+
+if ! lsattr $HOME/.bash_history | awk '{print $1}' | grep -q a
+then
+  if [ -n "$PS1" ]
+  then
+    echo "Bash history file is not protected against accidental deletion"
+  fi
+fi
+
+pathmunge $HOME/idea-IU/bin after
+
+optionally_source $HOME/.bashrc.indeed
+
+# Setup python virtualenv and virt env wrappers
+mkdir -p $HOME/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+optionally_source /usr/bin/virtualenvwrapper.sh
+
+
+# Fix up go
+mkdir -p $HOME/golang_workspace/src/github.com/$USER
+export GOPATH=$HOME/golang_workspace
+optionally_pathmunge /usr/local/go/bin /usr/local/go-*/bin
+optionally_pathmunge $GOPATH/bin
+
+# Groovy version manager
+optionally_source $HOME/.gvm/bin/gvm-init.sh
+
+# GPG needs this?
+GPG_TTY=`tty`
+export GPG_TTY
+
+# Setup up ssh and gpg agents
+gpg-agent --daemon > /dev/null 2>&1
+eval `keychain --agents gpg --eval --quiet`
+eval `keychain --agents ssh --eval --quiet`
+
+if [[ -n "$PS1" ]]
+then
+  # In interactive shells, import the ssh keys if they are not alread
+  if [ -f /usr/bin/keychain ]; then
+    eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
+  fi
+
+  optionally_source /usr/share/doc/git/contrib/completion/git-prompt.sh
+  optionally_source /usr/share/doc/git/contrib/completion/git-completion.bash
+  optionally_pathmunge $HOME/vim-*/bin /usr/local/vim-*/bin /usr/local/vim/bin
+
+  # Set up prompt for git support
+  GIT_PS1_SHOWCOLORHINTS=1
+  GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWSTASHSTATE=1
+  GIT_PS1_SHOWUNTRACKEDFILES=1
+  GIT_PS1_SHOWUPSTREAM="verbose name git"
+  #GIT_PS1_SHOWUPSTREAM="name git"
+  GIT_PS1_DESCRIBE_STYLE=describe
+
+  if type -t __git_ps1 | grep -q function
+  then
+    PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+  fi
+
+  /bin/ls -l $HOME | grep '^-'
+  export CDPATH=.:~:~/git:~/proj:~/golang_workspace/src/indeed/gophers/3rdparty/p:~/golang_workspace/src/indeed/gophers/3rdparty/p/github.com:~/golang_workspace/src/indeed:~/golang_workspace/src/github.com:~/indeed
+
+  if [ "$TERM" = "xterm" ]
+  then
+    TERM=xterm-256color
+  fi
+fi

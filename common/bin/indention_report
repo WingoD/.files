@@ -1,0 +1,39 @@
+#!/bin/perl
+
+use Data::Dumper;
+
+my %spaces;
+my %tabs;
+my $mixed_whitespace_indention = 0;
+
+print $ARGV[0];
+
+while(<>) {
+  next if /^\s*$/; # skip blank lines
+  next if /^\s*#/; # skip comment lines
+  next if /^\s*\/\//; # skip comment lines
+  next if /^\s*\/\*/; # skip comment lines
+  # BUG - doesn't handle multi-line comments
+  # BUG - doesn't handle " or ; comments
+  $mixed_whitespace_indention += 1 if /^\t+ /;
+  $mixed_whitespace_indention += 1 if /^ +\t/;
+  if (/^(\t+)\S/)
+  {
+    $tabs{length($1)}+=1;
+  }
+  if (/^( +)\S/)
+  {
+    $spaces{length($1)}+=1;
+  }
+}
+
+print join(" ", "", sort { $a <=> $b } (keys(%spaces))), "\n";
+#print "Mixed indention lines:\t$mixed_whitespace_indention\n";
+#foreach my $tabs (sort { $a cmp $b } (keys(%tabs)))
+#{
+#  print "$tabs tabs deep indented lines: $tabs{$tabs}\n";
+#}
+#foreach my $spaces (sort { $a cmp $b } (keys(%spaces)))
+#{
+#  print "$spaces spaces deep indented lines: $spaces{$spaces}\n";
+#}

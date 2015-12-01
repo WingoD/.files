@@ -1,0 +1,11 @@
+#!/bin/bash
+
+minutes=$1
+shift
+message="$*"
+
+at now + $minutes minute <<EOF
+DISPLAY=:0 xmessage -geometry 1200x700 -default 'okay' \"$message\"
+EOF
+
+atq

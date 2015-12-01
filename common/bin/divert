@@ -1,0 +1,24 @@
+#!/usr/bin/env perl
+
+my $ci = 0;
+
+#if ($ARGV[0] == '-i')
+#{
+#  $ci = 1;
+#  shift @ARGV;
+#}
+
+my $pattern = shift @ARGV;
+
+print STDERR $pattern;
+
+while(<>) {
+  if (m/$pattern/i)
+  {
+    print;
+  }
+  else
+  {
+    print STDERR;
+  }
+}

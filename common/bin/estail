@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ "$VIRTUAL_ENV" != $HOME/.virtualenvs/estail ]]
+then
+  . $HOME/.bashrc
+
+  # select the estail virtualenv
+  workon estail
+fi
+
+python ~/git/estail/estail.py "$@"

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+LATP_INTERVAL=60
+git_anything_to_pull() {
+  rc=0
+
+  SKIP_CHECK=false
+  if [[ -n "$LATP_STATUS" ]]
+  then
+    LATP_STATUS_TIME=${LATP_STATUS%%:*}
+    LATP_EXPIRE_TIME=$(( LATP_STATUS_TIME + LATP_INTERVAL ))
+    LATP_STATUS_RC=${LATP_STATUS#*:}
+    LATP_STATUS_RC=${LATP_STATUS_RC%:*}
+    LATP_STATUS_PWD=${LATP_STATUS##*:}
+
+    if [[ "$LATP_EXPIRE_TIME" -gt "`date +%s`" ]] && [[ "`pwd`" = "$LATP_STATUS_PWD" ]]
+    then
+      SKIP_CHECK=true
+      rc=$LATP_STATUS_RC
+    fi
+  fi
+
+  if [[ "$SKIP_CHECK" = "false" ]]
+  then
+    for remote_current_commit_ref_and_sym in `git ls-remote origin | grep refs/heads/ | sed -e 's/\t/:/' `
+    do
+      [[ "-d" = "$1" ]] && echo "<$remote_current_commit_ref_and_sym>"
+      symbolic_ref=${remote_current_commit_ref_and_sym#*:}
+      remote_current_commit_ref=${remote_current_commit_ref_and_sym%:*}
+      [[ "-d" = "$1" ]] && echo $symbolic_ref
+      [[ "-d" = "$1" ]] && echo $remote_current_commit_ref
+      if git rev-list --all | grep -q $remote_current_commit_ref
+      then
+        [[ "-d" = "$1" ]] && echo "$symbolic_ref is up to date"
+      else
+        rc=1
+        [[ "-q" = "$1" ]] || echo "$symbolic_ref is not up to date"
+      fi
+    done
+    LATP_STATUS="`date +%s`:$rc:`pwd`"
+  fi
+
+  ([[ "0" = "$rc" ]] && [[ "-q" != "$1" ]]) && echo "Everything is up to date"
+
+  return  $rc
+}
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -t root@localhost 'tmux attach || tmux'

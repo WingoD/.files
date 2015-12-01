@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in tst-mcontrol1 tst-mcontrol2 tst-mcontrol3 stg-log3 stg-recos1 stg-squall1
+do
+  echo $i
+  ssh $i 'consul info' | egrep 'server|leader'
+  ssh $i 'df -hlP /usr /var'
+  ssh $i 'du -sm /usr/local/consul' 2> /dev/null
+done

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. /etc/profile
+. $HOME/.bash_profile
+. $HOME/.bashrc
+ec2-describe-instances | grep INSTANCE | grep running | awk -F"\t" '{print $2"\t"$6"\t"$10}'
+

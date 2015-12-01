@@ -1,0 +1,14 @@
+source /etc/screenrc
+caption always "%{Yk} %H %0c:%s %{k}|%{G} %l %{k}|%{W} %-w%{+u}%n %t%{-u}%+w"
+multiuser on
+vbell off
+shell -$SHELL
+altscreen on
+scrollback 20000
+defscrollback 20000
+#
+# source ~/.screenrc.local
+# hardstatus on
+# hardstatus alwayslastline
+# hardstatus string "%{.bW}%-w%{.rW}%f%n %t%{-}%+w %=%{..G}[%H %l] %{..Y} %m/%d %c:%s "
+

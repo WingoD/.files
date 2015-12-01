@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+HOST_OUTPUT=`host $1`
+IP=`echo $HOST_OUTPUT | awk '{print $NF}'`
+
+perl -p -i~ -e "s/.*(${1}|${IP}).*//" ~/.ssh/known_hosts
+setup_key root@$1
+ssh -t root@$1 yum install vim-enhanced screen mlocate strace git emacs tcpdump
+ssh -t root@$1 git clone ssh://wwalker@silver.bybent.com/var/www/home/wwalker/git_repos/dotfiles.git
+ssh -t root@$1 'cd dotfiles; bin/initialize'
+ssh -t root@$1 'updatedb &'

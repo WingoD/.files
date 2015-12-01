@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# NTSC 720x486 in columns 88x27
+
+i=0
+
+while [ 1 ]
+do
+   x=$[i+100];
+   import -frame -window $1 "cap_${x/1/}.miff"
+   i=$(( $i + 1 ))
+   # sleep 2s
+done

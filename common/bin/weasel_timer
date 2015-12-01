@@ -1,0 +1,50 @@
+#!/bin/bash
+
+usage() {
+  printf "
+  queue up a message
+  $0 <sleep_minutes>
+  what is in the queue
+  $0 -q 
+  "
+}
+
+if [[ $# = 0 ]]
+then
+  printf "Usage"
+  exit
+fi
+path=$HOME/bin/weasel_timer
+
+if [[ "$1" == "-m" ]]
+then
+  offset=$2
+  message=$3
+
+  sleep $offset
+  DISPLAY=:0 xmessage -geometry 1200x700 -default 'okay' "$message"
+
+  exit
+fi
+
+if [[ "$1" == "-q" ]]
+then
+  atq
+  for i in `atq | awk '{print $1}'`
+  do
+    at -c $i | grep weasel_timer.*-m
+  done
+
+  exit
+fi
+
+minutes=$1
+shift
+message="$*"
+offset=`date +%S`
+
+at now + $minutes minute <<EOF
+  $path -m $offset \"$message\"
+EOF
+
+atq

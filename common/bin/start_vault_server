@@ -1,0 +1,7 @@
+#!/bin/bash
+
+isodate=$(date +%F_%H.%M.%S)
+killall vault
+sleep 2
+mkdir -p $HOME/logs
+nohup vault server -log-level=debug -config=$HOME/etc/vault/server-config.hcl >> $HOME/logs/vault-server-${isodate}.log 2>&1 < /dev/null &

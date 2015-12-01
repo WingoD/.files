@@ -1,0 +1,21 @@
+#!/bin/bash
+# tmux_shift_windows shift_amount left_window right_window
+# tmux_shift_windows 2 5
+usage() {
+  printf "%s\n" "tmux_shift_windows shift_amount left_window right_window"
+  printf "%s\n" "tmux_shift_windows -2 4 6"
+  exit 1
+}
+
+echo $#
+
+[[ $# != 3 ]] && usage
+
+shift_amount=$1
+left_window=$2
+right_window=$3
+
+for (( index=$left_window; index <= $right_window; index++ ))
+do
+    tmux move-window -d -s :$index -t :$(( index + $shift_amount ))
+done

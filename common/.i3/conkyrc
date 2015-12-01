@@ -1,0 +1,45 @@
+background no
+cpu_avg_samples 2
+extra_newline no
+format_human_readable yes
+if_up_strictness address
+max_text_width 0
+net_avg_samples 2
+no_buffers yes
+out_to_console yes
+out_to_stderr no
+out_to_x no
+own_window no
+short_units yes
+temperature_unit fahrenheit
+#total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer none
+#use_spacer left
+
+pad_percents 2
+
+TEXT
+[{ "full_text" : " " },
+ { "full_text" : "CPU [${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4}]%" },
+ { "full_text" : "RAM $memeasyfree/$memmax" },
+ { "full_text" : "Swap $swapfree/$swapmax" },
+ { "full_text" : "sda: R ${diskio_read /dev/sda}/s W ${diskio_write /dev/sda}/s" },
+ ${if_existing /dev/sdb}{ "full_text" : "sdb: R ${diskio_read /dev/sdb}/s W ${diskio_write /dev/sdb}/s" },$endif
+${if_up eth0}
+ { "full_text" : "eth0: U ${upspeed eth0}/s D ${downspeed eth0}/s" },
+$else
+${if_up wlan0}
+ { "full_text" : "wlan0: U ${upspeed wlan0}/s D ${downspeed wlan0}/s" },
+$else
+ { "full_text" : "<no network>" },
+$endif
+$endif
+ { "full_text" : "root: ${fs_used /}/${fs_size /}" },
+# { "full_text" : "Temp: ${acpitemp}C" },
+${if_existing /sys/class/power_supply/BAT1}
+ { "full_text" : "BAT ${battery_percent BAT1}%" },
+$endif
+ { "full_text" : "${time %d %b, %H:%M}" }
+],

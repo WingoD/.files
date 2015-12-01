@@ -1,0 +1,3 @@
+#!/bin/sh 
+
+(/usr/bin/formail -r -k -A"X-Loop: wwalker@bybent.com" -I"Return-Path: bounces@buzzard.onr.com" -I"Reply-To:bounces@buzzard.onr.com"; cat ~/spam_reply.body) | /usr/sbin/sendmail -t -f bounces@bybent.com

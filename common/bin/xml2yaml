@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+class CardsXmlYaml
+  require 'rubygems'
+  require 'yaml'
+  require 'rexml/document'
+  YMLFile='cards.yml'
+  XMLFile='cards.xml'
+
+  def self.xml_process(root)
+    head={}
+    begin
+      key=root.expanded_name
+      root.children.each do |el|
+        value=xml_process(el)
+        if value.is_a?(String)
+          next if value.gsub(/[\\n\\t\\s]/,'').empty?
+        end
+        if head[key].nil?
+          head[key]=value
+        else
+          if head[key].keys.include?(value.keys[0])
+            old_value=head[key][value.keys[0]]
+            head[key][value.keys[0]]=[]
+            head[key][value.keys[0]]<<old_value
+            head[key][value.keys[0]]<<value.values[0]
+            head[key][value.keys[0]].flatten!
+          else
+            head[key][value.keys[0]]=value.values[0]
+          end
+        end
+      end
+    rescue
+      begin
+        return root.value
+      rescue
+      end
+      return nil
+    end
+    head
+  end
+
+  def self.to_yml_file(infile=XMLFile,outfile=YMLFile,conversion_type=:file)
+    output=File.new(outfile,'w')
+    output.puts(YAML.dump(self.to_yml(infile,conversion_type)))
+    output.close
+  end
+
+  def self.to_yml(doc=XMLFile,conversion_type=:file)
+    begin
+      doc=REXML::Document.new(File.new(doc)) if conversion_type==:file
+    rescue Exception=>e
+      print("Error reading xml data from file.\n")
+      doc=nil
+    end
+    return nil if doc.nil?
+    base=[]
+    doc.children.each do |el|
+      base << xml_process(el)
+    end
+    base
+  end
+end
+
+if __FILE__ == $0
+  CardsXmlYaml.to_yml_file
+end

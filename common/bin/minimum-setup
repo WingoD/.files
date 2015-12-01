@@ -1,0 +1,14 @@
+#!/bin/bash
+
+host=$1
+
+#cssh $1
+#set -x
+#ssh-copy-id $1
+#cssh $1
+ssh $1 mkdir -p bin
+scp ~/bin/tat $1:bin/
+#ssh $1 sudo yum install -y tmux strace vim-enhanced gpg mutt pxz
+#ssh $1 "echo syntax on >> .vimrc"
+#ssh $1 "echo set bg=dark >> .vimrc"
+scp ~/.tmux.conf $1:

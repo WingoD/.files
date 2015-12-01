@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo cp ~/resolv.conf /etc/resolv.conf
+sudo vpnc ~/hp_lab.vpc
+sudo route delete default
+sudo route add default gw 10.20.30.1
+sudo cp ~/resolv.conf.vpn /etc/resolv.conf

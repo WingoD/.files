@@ -1,0 +1,13 @@
+#!/bin/bash
+
+host=$1
+user=
+if [ $2 ]
+then
+	user=$2@
+	tmux rename-window $user$host
+else
+	tmux rename-window $host
+fi
+
+ssh -t $user$host "tmux attach || tmux"

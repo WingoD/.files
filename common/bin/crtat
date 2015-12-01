@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while true
+do
+  date
+  rtat "$@"
+  printf "Something went wrong\n"
+  sleep 15
+done

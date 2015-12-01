@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ ! -d "$HOME/crds_vpn" ]]
+then
+  echo "No crds_vpn dir, exiting"
+  exit 1
+fi
+
+GATEWAY=`route -n  | grep ^0.0.0.0 | awk '{print $2}'`
+sudo cp ~/crds_vpn/resolv.conf /etc/resolv.conf
+sudo vpnc --local-port 0 ~/crds_vpn/crossroads_dev_vpn.vpc
+sudo route delete default
+sudo route add -net 192.168.0.0/16 tun1
+sudo route add -net 10.29.0.0/16 tun1
+sudo route add -net 10.30.0.0/16 tun1
+sudo route add -net 10.31.0.0/16 tun1
+sudo route add default gw $GATEWAY
+sudo cp ~/crds_vpn/resolv.conf.vpn /etc/resolv.conf

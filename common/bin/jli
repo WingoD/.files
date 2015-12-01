@@ -1,0 +1,30 @@
+#!/bin/bash
+
+HOSTNAME=$1
+USERNAME=$2
+
+if [ "$USERNAME" ]
+then
+  LOGIN="${USERNAME}@${HOSTNAME}"
+else
+  LOGIN="${HOSTNAME}"
+fi
+
+if [[ -x ~/bin/xtb ]]
+then
+  xtb $LOGIN
+fi
+
+# Fix known_hosts
+IP=`host $HOSTNAME | awk '{print $4}'`
+
+# remove the entry with the IP and the hostname
+ssh-keygen -R $IP
+ssh-keygen -R $HOSTNAME
+#sed -i.bak -e "/${IP}.* /d" -e "/${HOSTNAME}[^a-zA-Z0-9]/d" $HOME/.ssh/known_hosts
+
+# add the ssh key for the host:
+ssh-keyscan $HOSTNAME 2> /dev/null >> $HOME/.ssh/known_hosts
+
+# Login without a password, if that fails, install your key on the remote server and then login
+ssh -o PasswordAuthentication=no $LOGIN || (ssh-copy-id -i ~/.ssh/id_dsa.pub $LOGIN; ssh $LOGIN)

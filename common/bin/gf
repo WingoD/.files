@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in ~/projects ~/indeed ~/git ~/golang_workspace
+do
+  find $i | grep $1 | grep .git/config
+done
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+name=$1
+if [[ "$2" = "-c" ]]
+then
+  ssh -O exit -A -t ut.eclipsing.com
+fi
+
+xtb UT-$name
+ssh -A -t ut.eclipsing.com "tmux attach -t $name"

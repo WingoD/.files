@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for c in $(git log -G "$2" --format=%H -- $1); do
+    git --no-pager grep -F -e "$2" $c -- $1
+done

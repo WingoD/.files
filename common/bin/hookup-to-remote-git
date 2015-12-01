@@ -1,0 +1,8 @@
+#!/bin/bash
+
+name=$1
+
+git remote add origin silver.bybent.com:$HOME/git_repos/$name.git
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+git push origin master:refs/heads/master

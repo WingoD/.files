@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in `cat $1`
+do
+  a=`echo $i | sed -e 's/\//_/g'`
+  (mkdir -p $a && cd $a && wget $i/releases/17/Fedora/x86_64/iso > output 2>&1) &
+done
+
+	

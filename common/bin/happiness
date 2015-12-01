@@ -1,0 +1,13 @@
+#!/bin/bash
+
+host=$1
+
+cd $HOME
+cssh ${host}
+set -x
+ssh-copy-id ${host}
+cssh ${host}
+ssh ${host} mkdir -p bin
+ssh -t ${host} sudo yum install -y tmux strace vim-enhanced gpg mutt pxz rsync
+rsync bin/tat ${host}:bin/
+rsync -avHxz .vimrc* .Xdefaults .tmux.conf ${host}:

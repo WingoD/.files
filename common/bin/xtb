@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+$title=shift;
+
+print STDERR "]0;$title";

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+host=$1
+user=
+if [ $2 ]
+then
+	user=$2@
+	xtb $user$host
+else
+	xtb $host
+fi
+
+ssh -t $user$host screen -xRR -e ^Bb

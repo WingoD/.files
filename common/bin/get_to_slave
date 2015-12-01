@@ -1,0 +1,21 @@
+#!/bin/bash
+# vim: ft=sh
+
+slave=$1
+
+if [[ -z "$slave" ]]
+then
+  printf "You must pass the salve number as an argument\n"
+  exit 1
+fi
+
+remoteport=`printf "34%02d" $slave`
+
+if [[ -n "$2" ]]
+then
+  localport=$2
+else
+  localport=$remoteport
+fi
+
+ssh -L "${localport}:127.0.0.1:${remoteport}" -N -f deploy@mmtop.brenv.net

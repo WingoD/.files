@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo killall vpnc
+sudo cp ~/crds_vpn/resolv.conf /etc/resolv.conf
