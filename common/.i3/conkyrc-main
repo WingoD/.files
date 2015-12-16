@@ -21,7 +21,8 @@ use_spacer none
 pad_percents 2
 
 TEXT
-[{ "full_text" : " " },
+[{ "full_text" : "${exec ssh 192.168.85.1 top -s 1 -l 1 -f | grep vmx | awk '{print $8}'}"},
+{ "full_text" : " " },
 ${if_existing /sys/class/power_supply/BAT1}
  { "full_text" : "BAT ${battery_percent BAT1}%" },
 $endif
