@@ -45,6 +45,7 @@ shopt -u nullglob
 umask 0022
 
 optionally_source $HOME/.bashrc.custom
+optionally_source $HOME/.bashrc.tig
 
 # Set up X Window
 if [[ -f ~/.Xdefaults ]]

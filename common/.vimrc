@@ -23,6 +23,7 @@ set history=10000
 set wrap                      " wrap long lines
 set expandtab
 set ruler
+set hlsearch
 
 " These 4 lines break left and right arrows in insert mode:
 "imap OA <ESC>ki

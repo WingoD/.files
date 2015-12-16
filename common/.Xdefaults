@@ -1,6 +1,7 @@
 xterm*utf8: 1
 *ttyModes: erase ^?
 XTerm*cursorBlink: True
+XTerm.VT100.color4: CornflowerBlue
 !XTerm*font: -adobe-courier-medium-r-normal--20-140-100-100-m-110-iso8859-1
 !XTerm*font1: -adobe-courier-medium-r-normal--12-120-75-75-m-70-iso8859-1
 !XTerm*font2: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1
@@ -46,5 +47,8 @@ URxvt.font:	xft:DejaVu Sans Mono:pixelsize=15
 URxvt.foreground: white
 URxvt.background: black
 URxvt.cursorColor: gray
-URxvt.cutchars: "\\`\"'%&()*,.;<>@[]{|}/-:"
-URxvt.tripleclickwords: False
+URxvt.VT100.color4: CornflowerBlue
+URxvt.color4: CornflowerBlue
+URxvt.cutchars: "\\`\"'%&()*,.;<>@[]{|}/-:=+"
+URxvt.loginShell: True
+URxvt.tripleclickwords: True

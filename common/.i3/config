@@ -46,7 +46,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym Control+$alt+t exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Control+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -105,34 +105,40 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1 Browser"
-set $workspace2 "2 Terms"
-set $workspace3 "3 Instant Messages"
-set $workspace4 "4 Thunderbird"
+set $workspace1 "  1   "
+set $workspace2 "  2   "
+set $workspace3 "  3   "
+set $workspace4 "  4   "
+set $workspace5 "  5   "
+set $workspace6 "  6   "
+set $workspace7 "  7   "
+set $workspace8 "  8   "
+set $workspace9 "  9   "
+set $workspace0 "  0   "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -216,10 +222,10 @@ client.unfocused        #333333 #666666 #cccccc #292d2e
 #for_window [window_role="buddy_list"] floating enable, move scratchpad, scratchpad show;
 #for_window [window_role="conversation"] floating enable, move scratchpad, scratchpad show;
 for_window [class="google-chrome"] move container to workspace $workspace1; floating disable
-for_window [class="URxvt"] move container to workspace $workspace2; floating disable
-for_window [class="Pidgin"] move container to workspace $workspace3; floating disable
-for_window [class="Skype"] move container to workspace $workspace3; floating disable
-for_window [class="Thunderbird"] move container to workspace $workspace4; floating disable
+#for_window [class="URxvt"] move container to workspace $workspace1; floating disable
+for_window [class="Pidgin"] move container to workspace $workspace1; floating disable
+for_window [class="Skype"] move container to workspace $workspace1; floating disable
+for_window [class="Thunderbird"] move container to workspace $workspace1; floating disable
 #bindsym $mod+backslash [instance="skype"] scratchpad show;
 bindsym $mod+backslash scratchpad show;
 
@@ -239,3 +245,27 @@ bindsym Control+Shift+$mod+Right move workspace to output right
 bindsym Control+Shift+$mod+Down move workspace to output down
 bindsym Control+Shift+$mod+Up move workspace to output up
 
+show_marks yes
+
+bindsym Control+Shift+$alt+1 mark "1"
+bindsym Control+Shift+$alt+2 mark "2"
+bindsym Control+Shift+$alt+3 mark "3"
+bindsym Control+Shift+$alt+4 mark "4"
+bindsym Control+Shift+$alt+5 mark "5"
+bindsym Control+Shift+$alt+6 mark "6"
+bindsym Control+Shift+$alt+7 mark "7"
+bindsym Control+Shift+$alt+8 mark "8"
+bindsym Control+Shift+$alt+9 mark "9"
+bindsym Control+Shift+$alt+0 mark "0"
+
+bindsym Control+$alt+1 [con_mark="1"] focus
+bindsym Control+$alt+2 [con_mark="2"] focus
+bindsym Control+$alt+3 [con_mark="3"] focus
+bindsym Control+$alt+4 [con_mark="4"] focus
+bindsym Control+$alt+5 [con_mark="5"] focus
+bindsym Control+$alt+6 [con_mark="6"] focus
+bindsym Control+$alt+7 [con_mark="7"] focus
+bindsym Control+$alt+8 [con_mark="8"] focus
+bindsym Control+$alt+9 [con_mark="9"] focus
+bindsym Control+$alt+0 [con_mark="0"] focus
+workspace_layout tabbed

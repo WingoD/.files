@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in tst-mcontrol1 tst-mcontrol2 tst-mcontrol3 stg-log3 stg-recos1 stg-squall1
+for i in tst-mcontrol1 tst-mcontrol2 tst-mcontrol3 stg-log3 stg-recos1 stg-squall1 aus-mcontrol1 aus-mcontrol2 aus-mcontrol3
 do
   echo $i
   ssh $i 'consul info' | egrep 'server|leader'

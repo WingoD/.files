@@ -8,6 +8,8 @@ host=$1
 #cssh $1
 ssh $1 mkdir -p bin
 scp ~/bin/tat $1:bin/
+scp ~/Files/rxvt-unicode-256color.infocmp $1:
+ssh $1 tic rxvt-unicode-256color.infocmp
 #ssh $1 sudo yum install -y tmux strace vim-enhanced gpg mutt pxz
 #ssh $1 "echo syntax on >> .vimrc"
 #ssh $1 "echo set bg=dark >> .vimrc"
