@@ -38,8 +38,8 @@ XTerm*metaSendsEscape:	True
 	Ctrl<Key>-: smaller-vt-font()
 
 URxvt.perl-ext-common: default,font-size
-URxvt.keysym.C-1:   font-size:decrease
-URxvt.keysym.C-2:   font-size:increase
+URxvt.keysym.C-minus:   font-size:decrease
+URxvt.keysym.C-equal:   font-size:increase
 URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.perl-lib: /usr/lib/urxvt/perl:/home/wwalker/bin
