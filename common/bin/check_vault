@@ -1,0 +1,33 @@
+#!/bin/bash
+
+for i in tst stg
+do
+  active_server_count=0
+  broken_server_count=0
+  for j in 1 2 3
+  do
+    hostname=$i-mcontrol$j
+
+    http_response_code=$(curl -k --tlsv1.2 -v -X GET https://${hostname}:8200/v1/sys/health 2>&1 | grep '< HTT' | awk '{print $3}')
+    if [[ $http_response_code = 200 ]]
+    then
+      echo "Vault is up and the active server on $hostname"
+      active_server_count=$(( active_server_count + 1 ))
+    elif [[ $http_response_code = 429 ]]
+    then
+      echo "Vault is up and a standby server on $hostname"
+    else
+      echo "Vault is broken on $hostname; response code $http_response_code"
+      broken_server_count=$(( broken_server_count + 1 ))
+    fi
+  done
+  if [[ $active_server_count != "1" ]]
+  then
+    echo "There are no active vault servers in $i"
+  fi
+  if [[ $broken_server_count != "0" ]]
+  then
+    echo "There are ${broken_server_count} broken vault servers in $i"
+  fi
+  echo ""
+done

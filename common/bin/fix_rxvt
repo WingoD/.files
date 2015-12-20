@@ -1,0 +1,4 @@
+#!/bin/bash
+
+scp ~/Files/rxvt-unicode-256color.infocmp $1:
+ssh $1 tic rxvt-unicode-256color.infocmp

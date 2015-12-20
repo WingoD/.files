@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for h in $(grep . ~/etc/hosts | grep -v ^#)
+do
+  echo $h
+  echo scp $1 $h:$2
+  scp $1 $h:$2
+done

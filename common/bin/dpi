@@ -1,0 +1,5 @@
+#!/bin/env ruby
+
+diag = (ARGV[0].to_f ** 2 + ARGV[1].to_f ** 2) ** 0.5
+dpi = diag / ARGV[2].to_f
+puts dpi

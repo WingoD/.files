@@ -1,0 +1,9 @@
+#!/bin/bash
+
+now=$(date +%Y/%m/%d %H)
+for i in tst-mexec{1,2,3,4} stg-mexec{1,2}
+do
+  echo $i
+  ssh $i tail -10000 /var/local/consul-template/logs/consul-template-supervisor.log | log_bleach -t ct - | tail  | grep $now
+  ssh $i tail /var/local/consul-template/logs/consul-template-supervisor.log | grep $now
+done
