@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /home/pcap
+
+today=`date +%Y%m%d`
+
+#find eth[01] -type f | grep "eth[01]/$today" | grep -v empty | grep '\.142\.42' | xargs strings | grep SIP/ |grep -v Via:.SIP | grep -v 'SIP/2.0 200 OK' | grep -v 'SIP/2.0 100 Giving a try' | grep -v 'SIP/2.0 180 Ringing' |grep -v 'ACK sip:' | grep -v 'SIP/2.0 183 Session Progress' | grep -v 'BYE sip:' | grep -v 'SIP/2.0 100 Trying'
+find eth[01]/$today -type f | grep -v empty | grep '\.142\.42' | xargs strings | grep SIP/ |grep -v Via:.SIP | grep -v 'SIP/2.0 200 OK' | grep -v 'SIP/2.0 100 Giving a try' | grep -v 'SIP/2.0 180 Ringing' |grep -v 'ACK sip:' | grep -v 'SIP/2.0 183 Session Progress' | grep -v 'BYE sip:' | grep -v 'SIP/2.0 100 Trying'

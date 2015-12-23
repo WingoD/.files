@@ -1,0 +1,32 @@
+source $HOME/.tmux.conf
+new-session -d -s lh
+
+
+new-window -t lh:0 -n bash
+set-buffer "bash --login\n"
+paste-buffer -t lh:0
+
+
+new-window -t lh:1 -n tst-mcontrol1
+set-buffer "ssh -t tst-mcontrol1 'tmux attach || tmux'\n"
+paste-buffer -t lh:1
+
+
+new-window -t lh:2 -n tst-mcontrol2
+set-buffer "ssh -t tst-mcontrol2 'tmux attach || tmux'\n"
+paste-buffer -t lh:2
+
+
+new-window -t lh:3 -n tst-mcontrol3
+set-buffer "ssh -t tst-mcontrol3 'tmux attach || tmux'\n"
+paste-buffer -t lh:3
+
+
+new-window -t lh:4 -n tst-mexec1
+set-buffer "ssh -t tst-mexec1 'tmux attach || tmux'\n"
+paste-buffer -t lh:4
+
+
+new-window -t lh:5 -n tst-mexec2
+set-buffer "ssh -t tst-mexec2 'tmux attach || tmux'\n"
+paste-buffer -t lh:5

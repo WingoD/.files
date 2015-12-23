@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#export JAVA_HOME=/usr/java/jre1.7.0_10
+#export JAVA_HOME=/usr/java/jdk1.7.0_05/jre
+#export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME=/opt/jdk1.7.0_05/jre
+export PATH=$JAVA_HOME/bin:$PATH
+
+cd $HOME/IPMIView20
+./IPMIView20.sh

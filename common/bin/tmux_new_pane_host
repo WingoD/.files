@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# split the window - we end up in the new window
+a=`tmux split-window -P`
+tmux select-pane -t "$a"
+
+# Set the title of the new window
+tmux set-buffer "printf '\033]2;$1\033\\'"$'\n'
+tmux paste-buffer
+
+# Push the ssh command into the new window
+tmux set-buffer "ssh -t -A $1 'tmux attach || tmux || bash --login'"$'\n'
+tmux paste-buffer
+
+tmux select-layout tiled

@@ -1,0 +1,63 @@
+#!/bin/bash
+
+ACTIVE=`xdpyinfo | grep focus | awk '{print $3}' | sed -e 's/,//'`
+
+WORK_AREA_OFFSET=`wmctrl -d | grep \* | awk '{print $8}'`
+WORK_AREA_SIZE=`wmctrl -d | grep \* | awk '{print $9}'`
+
+WA_TOP=`echo $WORK_AREA_OFFSET | sed -e 's/.*,//'`
+WA_LEFT=`echo $WORK_AREA_OFFSET | sed -e 's/,.*//'`
+
+WA_HEIGHT=`echo $WORK_AREA_SIZE | sed -e 's/.*x//'`
+WA_WIDTH=`echo $WORK_AREA_SIZE | sed -e 's/x.*//'`
+
+WA_HALF_HEIGHT=$(($WA_HEIGHT/2))
+WA_HALF_WIDTH=$(($WA_WIDTH/2))
+
+NW_HEIGHT="$WA_HALF_HEIGHT"
+NW_WIDTH="$WA_HALF_WIDTH"
+
+case $1 in
+	1)
+		X=$WA_LEFT
+		Y=$WA_TOP
+		;;
+	"2")
+		X=$(($WA_LEFT + $WA_HALF_WIDTH))
+		Y=$(($WA_TOP))
+		;;
+	"3")
+		X=$(($WA_LEFT))
+		Y=$(($WA_TOP + $WA_HALF_HEIGHT))
+		;;
+	"4")
+		X=$(($WA_LEFT + $WA_HALF_WIDTH))
+		Y=$(($WA_TOP + $WA_HALF_HEIGHT))
+		;;
+	"L")
+		X=$(($WA_LEFT))
+		Y=$(($WA_TOP))
+		NW_HEIGHT="$WA_HEIGHT"
+		;;
+	"R")
+		X=$(($WA_LEFT + $WA_HALF_WIDTH))
+		Y=$(($WA_TOP))
+		NW_HEIGHT="$WA_HEIGHT"
+		;;
+	"T")
+		X=$(($WA_LEFT))
+		Y=$(($WA_TOP))
+		NW_WIDTH="$WA_WIDTH"
+		;;
+	"B")
+		X=$(($WA_LEFT))
+		Y=$(($WA_TOP + $WA_HALF_HEIGHT))
+		NW_WIDTH="$WA_WIDTH"
+		;;
+esac
+
+echo "wmctrl -i -r $ACTIVE -b remove,maximized_vert,maximized_horz"
+wmctrl -i -r $ACTIVE -b remove,maximized_vert,maximized_horz
+
+echo wmctrl -i -r $ACTIVE -e "0,$X,$Y,$NW_WIDTH,$NW_HEIGHT"
+wmctrl -i -r $ACTIVE -e "0,$X,$Y,$NW_WIDTH,$NW_HEIGHT"

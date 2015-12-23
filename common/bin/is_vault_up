@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for j in stg tst
+do
+for i in 1 2 3
+do
+  echo $j-mcontrol$i
+  ssh $j-mcontrol$i 'vault status' | egrep 'Leader|Mode'
+  # ssh tst-mcontrol$i 'df -hlP /usr /var'
+done
+done

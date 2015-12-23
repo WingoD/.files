@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+class SipTsharkSplit
+  @file_handles = {}
+
+  def self.file_handles
+    return @file_handles
+  end
+
+  def self.pfh(string, line)
+    if ! file_handles[string]
+      filename = string.gsub(' ', '_').gsub('/', '_')
+      file_handles[string] = File.open("/tmp/sip/#{filename}", 'w')
+    end
+    file_handles[string].puts line
+  end
+end
+
+STDIN.each_line do |line|
+  if line =~ /Request: (\S*)/
+    SipTsharkSplit.pfh($1, line)
+  else
+    if line =~ /Status: *(.*)/
+      SipTsharkSplit.pfh($1, line)
+    end
+  end
+end

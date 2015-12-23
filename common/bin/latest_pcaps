@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /home/pcap/
+echo eth0
+ls -l eth0 | tail
+echo eth1
+ls -l eth1 | tail
+

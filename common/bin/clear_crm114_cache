@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/bin/cp /dev/null $HOME/crm114/allmail.txt
+
+find $HOME/crm114/reaver_cache -type f -print | xargs /bin/rm

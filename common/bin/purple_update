@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rsync -avPHx ~/.purple/logs/. ut.eclipsing.com:.purple/logs/.
+rsync -avPHx ut.eclipsing.com:.purple/logs/. ~/.purple/logs/.

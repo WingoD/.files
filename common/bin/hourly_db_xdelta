@@ -1,0 +1,16 @@
+#!/bin/bash -ex
+
+HOST=root@bevo.eclipsing.com
+cd /home/db_hourly_backups/
+
+if ssh $HOST test -e bevo_latest_mysqldump.sql.done
+then
+  if ! test -e bevo_latest_mysqldump.sql
+  then
+    cp bevo_latest_mysqldump.sql.previous bevo_latest_mysqldump.sql
+  fi
+  rsync -avz $HOST:bevo_latest_mysqldump.sql .
+  xdelta3 -e -9 -s bevo_latest_mysqldump.sql.previous bevo_latest_mysqldump.sql bevo_latest_mysqldump.sql.`date +%Y%m%d.%H%M%S`
+  ssh $HOST /bin/rm bevo_latest_mysqldump.sql.done
+  mv bevo_latest_mysqldump.sql bevo_latest_mysqldump.sql.previous
+fi

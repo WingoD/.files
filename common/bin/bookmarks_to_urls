@@ -1,0 +1,3 @@
+#!/bin/bash
+
+perl -p -e '/.*A HREF="([^""]*)"/; $_ = "$1\n";' | sed -e 's/\&amp;/\&/g' | sort -u

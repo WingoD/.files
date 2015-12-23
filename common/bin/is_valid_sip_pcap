@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+STDIN.lines.each do |filename|
+  filename.chomp!
+  file_contents = IO.read(filename)
+  if file_contents[-1] != "\n"
+    puts filename
+  else
+    if file_contents[-2] != "\r"
+      puts filename
+    end
+  end
+end

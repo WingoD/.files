@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall synergyc 2> /dev/null
+date >> ~/logs/synergyc.log
+synergyc -f localhost < /dev/null >> ~/logs/synergyc.log 2>&1 &

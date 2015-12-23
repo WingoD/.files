@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall synergys 2> /dev/null
+date >> ~/logs/synergys.log
+synergys -a 127.0.0.1 -f -c ~/config/synergys.conf < /dev/null >> ~/logs/synergys.log 2>&1 &

@@ -1,0 +1,271 @@
+#!/bin/bash -ex
+
+grep -q '^deltarpm=false$' /etc/dnf/dnf.conf || perl -p -i -e 's/.*deltarpm.*/deltarpm=false/' /etc/dnf/dnf.conf || echo deltarpm=false >> /etc/dnf/dnf.conf
+
+grep -q '^SELINUX=disabled$' /etc/selinux/config || perl -p -i -e 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
+setenforce 0 || echo ""
+
+dnf update -y vim-minimal
+dnf install -y vim-enhanced tmux xterm python-pip
+dnf update -y
+
+#chattr +a /root/.bash_history /home/wwalker/.bash_history
+pip install awscli PyMySQL
+dnf install -y --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+dnf groupinstall -y "Development and Creative Workstation" "C Development Tools and Libraries" "Development Tools" "RPM Development Tools"
+
+# Fedora golang is broken
+#golang \
+#golang-github-docker-libcontainer \
+#golang-github-docker-libcontainer-devel \
+#golang-github-fsouza-go-dockerclient-devel \
+#golang-github-syndtr-gocapability-devel \
+#golang-pkg-bin-linux-amd64 \
+#golang-pkg-linux-amd64 \
+#golang-src \
+
+dnf install -y \
+ImageMagick-libs \
+PyYAML \
+a52dec \
+aalib-libs \
+ack \
+atop \
+autocorr-en \
+avahi-tools \
+binutils \
+clucene-contribs-lib \
+dkms \
+docker-io \
+docker-io-devel \
+docker-io-pkg-devel \
+docker-registry \
+dropwatch \
+dwatch \
+emacs \
+emacs-common \
+faad2-libs \
+fedora-dockerfiles \
+fence-agents-common \
+fence-agents-docker \
+firebird-libfbembed \
+firefox \
+flute \
+fping \
+gcc \
+gimp \
+gimp-libs \
+git \
+glibc-devel \
+glibc-headers \
+google-crosextra-caladea-fonts \
+google-crosextra-carlito-fonts \
+gperftools-libs \
+gstreamer-ffmpeg \
+gstreamer-plugins-ugly \
+gstreamer1-libav \
+gstreamer1-plugins-bad-freeworld \
+gstreamer1-plugins-ugly \
+gwebsockets \
+hunspell-en \
+hunspell-en-GB \
+hyphen \
+hyphen-en \
+iptraf-ng \
+kde-runtime-docs \
+kernel \
+kernel-debug-devel \
+kernel-devel \
+kernel-headers \
+kernel-modules-extra \
+keychain \
+khelpcenter \
+lame-libs \
+lbzip2 \
+ldc \
+ldc-config \
+ldc-druntime \
+ldc-druntime-devel \
+ldc-phobos \
+ldc-phobos-devel \
+leveldb \
+libabw \
+libbase \
+libcdr \
+libcmis \
+libdca \
+libe-book \
+libeot \
+libetonyek \
+libexttextcat \
+libfonts \
+libformula \
+libfreehand \
+libgcrypt-devel \
+libgomp \
+libgpg-error-devel \
+liblangtag \
+liblayout \
+libloader \
+libmad \
+libmimic \
+libmms \
+libmpeg2 \
+libmpg123 \
+libmspub \
+libmwaw \
+libodfgen \
+liborcus \
+libotf \
+libreoffice \
+libreoffice-base \
+libreoffice-calc \
+libreoffice-core \
+libreoffice-draw \
+libreoffice-emailmerge \
+libreoffice-graphicfilter \
+libreoffice-impress \
+libreoffice-langpack-en \
+libreoffice-math \
+libreoffice-opensymbol-fonts \
+libreoffice-pdfimport \
+libreoffice-pyuno \
+libreoffice-ure \
+libreoffice-writer \
+librepository \
+librtmp \
+libserializer \
+libvisio \
+libwps \
+libxslt-devel \
+libyaml \
+libyaml-devel \
+lpsolve \
+make \
+maven \
+metacity \
+mjpegtools-libs \
+mosh \
+mutt \
+mysql \
+mysql-devel \
+mythes \
+mythes-en \
+nginx \
+ngrep \
+ntp \
+ntpdate \
+opencore-amr \
+patch \
+pentaho-libxml \
+pentaho-reporting-flow-engine \
+perl-Bit-Vector \
+perl-Carp-Clan \
+perl-Date-Calc \
+perl-Date-Manip \
+php-symfony-common \
+php-symfony-stopwatch \
+pigz \
+postgresql-jdbc \
+procmail \
+pwgen \
+pxz \
+python \
+python-babel \
+python-backports-lzma \
+python-blinker \
+python-dateutil \
+python-devel \
+python-docker-py \
+python-docker-registry-core \
+python-fedwatch \
+python-flask \
+python-gevent \
+python-glanceclient \
+python-greenlet \
+python-gunicorn \
+python-httplib2 \
+python-iso8601 \
+python-itsdangerous \
+python-jinja2 \
+python-jsonpatch \
+python-jsonpointer \
+python-jsonschema \
+python-keyczar \
+python-keyring \
+python-keystoneclient \
+python-netaddr \
+python-oslo-config \
+python-pip \
+python-prettytable \
+python-pyasn1 \
+python-redis \
+python-rsa \
+python-sqlalchemy \
+python-telepathy \
+python-warlock \
+python-websocket-client \
+python-werkzeug \
+rdesktop \
+redis \
+ruby \
+ruby-devel \
+ruby-irb \
+ruby-libs \
+rubygem-bigdecimal \
+rubygem-io-console \
+rubygem-json \
+rubygem-psych \
+rubygem-rdoc \
+rubygems \
+rubypick \
+screen \
+sendmail \
+strace \
+swatch \
+tcpdump \
+the_silver_searcher \
+thunderbird \
+tmux \
+tokyocabinet \
+twolame-libs \
+urlview \
+vim-enhanced \
+vo-amrwbenc \
+wireshark \
+wmctrl \
+x264-libs \
+xapian-bindings \
+xapian-bindings-python \
+xapian-core-libs \
+xcb-util-keysyms \
+xclip \
+xdotool \
+xterm
+
+echo "[atlassian-hipchat]
+baseurl=http://downloads.hipchat.com/linux/yum
+gpgkey=https://www.hipchat.com/keys/hipchat-linux.key
+" > /etc/yum.repos.d/atlassian-hipchat.repo
+dnf install -y hipchat
+
+service ntpd restart
+chkconfig ntpd on
+
+if [[ ! -d /usr/local/go ]]
+then
+  wget https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
+  tar -C /usr/local -xzf go1.4.1.linux-amd64.tar.gz
+fi
+
+#cd /etc/yum.repos.d/
+#wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+#yum install VirtualBox-4.3.x86_64
+#export KERN_DIR=/usr/src/kernels/`uname -r`
+#/etc/init.d/vboxdrv setup
+##usermod -a -G vboxusers wwalker
+
+dnf install jdk-8u25-linux-x64.rpm || echo "JAVA NOT INSTALLED!!!"
+
+dnf install -y skype-4.3.0.37-fedora.i586.rpm || echo "SKYPE NOT INSTALLED"

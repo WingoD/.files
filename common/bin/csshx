@@ -1,0 +1,6 @@
+#!/bin/bash
+
+shift
+shift
+shift
+cssh $*

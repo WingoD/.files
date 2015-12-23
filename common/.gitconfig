@@ -1,0 +1,39 @@
+[user]
+	name = Dan Wingo
+	email = dan@karlen.com
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[core]
+	sharedRepository = true
+	preloadindex = true
+	editor = vim
+[receive]
+	denyCurrentBranch = ignore
+[diff]
+	noprefix = true
+	tool = vimdiff
+[alias]
+	tagcommit = !sh -c 'git rev-list $0 | head -n 1'
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+	who = shortlog -s --
+[github]
+	user = dwingo
+[push]
+  default = current
+[pull]
+  rebase = true
+[pager]
+	diff =
+[pack]
+	windowMemory = 3g
+[merge]
+	tool = vimdiff

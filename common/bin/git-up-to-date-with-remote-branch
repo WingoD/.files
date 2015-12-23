@@ -1,0 +1,5 @@
+#!/bin/bash
+
+local_branch_symbolic_ref=`git symbolic-ref HEAD`
+remote_current_commit_ref=`git ls-remote origin -h "$local_branch_symbolic_ref" | awk '{print $1}'`
+git rev-list HEAD | grep -q "$remote_current_commit_ref" && echo "Local is up to date"

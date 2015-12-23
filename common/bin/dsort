@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+use strict;
+
+my %results;
+while(<>)
+{
+	my $host;
+	/^(\S+:)/;
+	$host = $1;
+	if (! defined $results{$host}) { $results{$host} = []; }
+	push @{$results{$host}}, $_;
+}
+
+foreach my $host (sort keys %results)
+{
+	print join("", @{$results{$host}});
+}
+	

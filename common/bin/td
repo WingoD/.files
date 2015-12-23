@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ~/ToDo
+date > td.log
+git pull > td.log 2>&1
+./todo.sh "$@"
+git commit -am 'Auto Commit' > td.log 2>&1
+git push > td.log 2>&1
+

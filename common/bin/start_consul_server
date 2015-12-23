@@ -1,0 +1,5 @@
+#!/bin/bash
+
+killall consul
+sleep 2
+GOMAXPROCS=16 consul agent -server -config-dir $HOME/consul/etc/consul.d -ui-dir $HOME/dist < /dev/null >> $HOME/logs/consul.log 2>&1 &

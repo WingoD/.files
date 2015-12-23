@@ -1,0 +1,3 @@
+nnoremap <Leader>f :CtrlPFunky<Cr>
+" Initialise list by a word under cursor
+nnoremap <Leader>u :execute 'CtrlPFunky ' .  expand('<cword>')<Cr>

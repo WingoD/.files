@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# split the window - we end up in the new window
+a=`tmux new-window -P| sed -e 's/0://' -e s/\.0//`
+
+sleep 1
+tmux select-window -t "$a"
+
+# Set the name of the new window
+tmux rename-window "${1%%.*}"
+
+# Push the ssh command into the new window
+tmux set-buffer "ssh -t -A $1 'tmux attach || tmux || bash --login'"$'\n'
+tmux paste-buffer

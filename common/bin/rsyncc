@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+foreach my $arg (@ARGV)
+{
+  if ($arg =~ /(.*):/)
+  {
+    print `ssh -O exit $1`;
+  }
+}

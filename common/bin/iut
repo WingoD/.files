@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for j in tst stg
+do
+  for i in mexec1 mexec2 mcontrol1 mcontrol2 mcontrol3
+  do
+    echo $j-$i
+    ssh $j-$i 'uptime'
+  done
+done

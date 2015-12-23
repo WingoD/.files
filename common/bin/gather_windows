@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in $(wmctrl -l | awk '{print $1}'); do
+  wmctrl -i -r $i -e 0,0,0,-1,-1
+  wmctrl -i -r $i -b add,maximized_vert,maximized_horz
+done

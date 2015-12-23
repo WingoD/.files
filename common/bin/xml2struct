@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'yaml'
+require 'rexml/document'
+require 'pp'
+
+#$debug = true
+
+def dbg(*ary)
+  if ary[0].is_a?(Exception)
+    if $debug
+      STDERR.puts ary[0].class
+      STDERR.puts ary[0].message
+      STDERR.puts ary[0].backtrace.join("\n")
+    else
+      raise ary[0]
+    end
+  end
+
+  return if !$debug
+
+  if ary.size == 2
+    STDERR.puts ary[0], ary[1].pretty_inspect
+  else
+    STDERR.puts ary[0].pretty_inspect
+  end
+end
+
+def xml_process(root)
+  dbg(:element, root)
+  head={}
+  begin
+    return root.value if root.is_a?(REXML::Text)
+    key=root.expanded_name
+    dbg(:key, key)
+
+    root.children.each do |el|
+      #  if el.is_a?(REXML::Text)
+      #    tempval = el.to_s
+      #    dbg("text child", tempval)
+      #    if tempval.gsub(/[\n\t\s]/,'').empty?
+      #      # The child element is a pure whitespace string
+      #      dbg("child element is a pure whitespace string", el)
+      #      next
+      #    end
+      #  end
+
+      value=xml_process(el)
+      dbg(:value, value)
+
+      if value.is_a?(String)
+        next if value.gsub(/[\n\t\s]/,'').empty?
+      end
+
+      if head[key].nil?
+        head[key]=value
+      else
+        if head[key].keys.include?(value.keys[0])
+          old_value=head[key][value.keys[0]]
+          head[key][value.keys[0]]=[]
+          head[key][value.keys[0]]<<old_value
+          head[key][value.keys[0]]<<value.values[0]
+          head[key][value.keys[0]].flatten!
+        else
+          head[key][value.keys[0]]=value.values[0]
+        end
+      end
+    end
+  rescue Exception => err 
+    # we assume that there were no children and that this is a bare string value
+    dbg err
+    begin
+      dbg(:value, root.value)
+      return root.value
+    rescue Exception => err
+      dbg err
+    end
+    dbg(:value, nil)
+    return nil
+  end
+#  if (root.attributes.length > 0)
+#    if head[key].is_a?(Hash)
+#      head[key][:__attributes] = {}
+#      root.attributes.each do |name, value|
+#        head[key][:__attributes][name] = value
+#      end
+#    else
+#      STDERR.puts "String (#{key}) had value: #{head[key]} and attributes: "
+#      root.attributes.each{|name, value| STDERR.puts "\t#{name} => #{value}"}
+#    end
+#  end
+  dbg(:value, head)
+  head
+end
+
+#require 'ruby-debug'
+#debugger
+doc = REXML::Document.new(File.new('a.xml'))
+root = doc.root
+a = xml_process(root)
+require 'yaml'
+puts YAML.dump(a)
+
+exit

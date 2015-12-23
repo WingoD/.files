@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xtb tats
+tmux attach -t Main || (tmux new-session -d && tmux source ~/.tmux.conf && tmux source ~/.tmux.Main && tmux attach -t Main)

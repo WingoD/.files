@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ls -ld /var/lib/mlocate/mlocate.db
+locate .iso | grep \\.iso$

@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+eval `keychain --noask --agents ssh --nogui --quiet --eval id_rsa id_dsa`
+cd /home/Backups/rn_database_backups/
+ssh root@rn-db-rep-3.solid-constructs.com 'mysqldump -u root -pHW7dAN9A --all-databases | xz -1' > rn-db-rep-3_db-backup.`date +%Y.%m.%d-%H.%M.00`.sql.gz 

@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+
+$name = <>;
+chomp $name;
+
+print "source $ENV{HOME}/.tmux.conf
+new-session -d -s $name
+
+";
+
+$x = -1;
+while(<>)
+{
+  chomp;
+  $x++;
+  /^([^:]*):(.*$)/;
+  print <<TMUX
+
+new-window -t ${name}:${x} -n $1
+set-buffer $2
+paste-buffer -t ${name}:${x}
+
+TMUX
+;
+}
+
+__END__
+new-session -d -s RN
+
+new-window -t RN:0 -n EXCEL-1
+set-buffer "ssh -t pairprogramming@excel-1.rapidnotify.com 'tmux attach || tmux'\n"
+paste-buffer -t RN:0
