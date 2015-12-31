@@ -3,5 +3,5 @@
 for h in $(grep . ~/etc/hosts | grep -v ^#)
 do
   echo $h
-  ssh $h "$@"
+  ssh -t -t $h "$@"
 done

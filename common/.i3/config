@@ -231,9 +231,9 @@ bindsym $mod+backslash scratchpad show;
 
 new_window normal 4
 new_float normal 4
-exec google-chrome
-exec thunderbird
-exec i3-sensible-terminal
+#exec google-chrome
+#exec thunderbird
+#exec i3-sensible-terminal
 exec pidgin
 exec skype
 

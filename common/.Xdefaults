@@ -1,7 +1,7 @@
 xterm*utf8: 1
 *ttyModes: erase ^?
 XTerm*cursorBlink: True
-XTerm.VT100.color4: CornflowerBlue
+XTerm.VT100.color4: blue1
 !XTerm*font: -adobe-courier-medium-r-normal--20-140-100-100-m-110-iso8859-1
 !XTerm*font1: -adobe-courier-medium-r-normal--12-120-75-75-m-70-iso8859-1
 !XTerm*font2: -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1
