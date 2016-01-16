@@ -83,3 +83,5 @@ set nosecure
 set exrc
 
 au BufRead,BufNewFile *.fls        set ft=fls
+" Make buffer selection easy with :b <tab>
+set wildchar=<Tab> wildmenu wildmode=full
