@@ -11,11 +11,11 @@ XTerm.VT100.color4: blue1
 !XTerm*font6: -adobe-courier-medium-r-normal--34-240-100-100-m-200-iso8859-1
 !XTerm*faceName: Bitstream Vera Sans Mono
 XTerm*faceName: DejaVu Sans Mono for Powerline
-XTerm*faceSize: 15
+XTerm*faceSize: 12
 XTerm*faceSize1: 8
 XTerm*faceSize2: 10
 XTerm*faceSize3: 12
-XTerm*faceSize4: 15
+XTerm*faceSize4: 14
 XTerm*faceSize5: 16
 XTerm*faceSize6: 18
 !XTerm*font: 10x20

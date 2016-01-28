@@ -143,6 +143,7 @@ libyaml \
 libyaml-devel \
 lpsolve \
 make \
+mariadb-server \
 maven \
 metacity \
 mjpegtools-libs \
@@ -259,6 +260,10 @@ then
   tar -C /usr/local -xzf go1.4.1.linux-amd64.tar.gz
 fi
 
+systemctl enable mariadb
+systemctl start mariadb
+systemctl enable sshd
+systemctl start sshd
 #cd /etc/yum.repos.d/
 #wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 #yum install VirtualBox-4.3.x86_64
