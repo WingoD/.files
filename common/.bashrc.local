@@ -112,7 +112,7 @@ eval `keychain --agents ssh --eval --quiet`
 
 if [[ -n "$PS1" ]]
 then
-  setxkbmap -option caps:none
+  [[ -n "$DISPLAY" ]] && setxkbmap -option caps:none
   # In interactive shells, import the ssh keys if they are not alread
   if [ -f /usr/bin/keychain ]; then
     eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
