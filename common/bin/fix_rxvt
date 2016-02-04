@@ -1,4 +1,6 @@
 #!/bin/bash
 
+scp ~/Files/screen-256color.infocmp $1:
+ssh $1 tic screen-256color.infocmp
 scp ~/Files/rxvt-unicode-256color.infocmp $1:
 ssh $1 tic rxvt-unicode-256color.infocmp
