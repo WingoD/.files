@@ -14,3 +14,4 @@ fi
 
 xtb $1
 ssh -A -t $1 bin/tat
+xtb bash

@@ -11,6 +11,8 @@ do
     export VAULT_ADDR
     vault status  | egrep 'Leader|Mode'
     ssh $j-mcontrol$i 'ps aux' | egrep '[v]ault'
+    echo -en "Ports in use\t"
+    ssh $j-mcontrol$i 'netstat -an' | egrep '8200' | wc -l
     # ssh $j-mcontrol$i 'vault status' | egrep 'Leader|Mode'
     # ssh tst-mcontrol$i 'df -hlP /usr /var'
   done
