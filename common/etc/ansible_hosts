@@ -1,3 +1,14 @@
+[imost:children]
+qa
+stage
+
+[most:children]
+qa
+stage
+ck
+ww
+rn
+
 [qa]
 tst-a5-imo01
 tst-a5-imo02
@@ -120,6 +131,10 @@ tst-zk1
 tst-zk2
 tst-zk3
 
+[qa-mexec]
+tst-mexec3
+tst-mexec4
+
 [qa-wheel]
 tst-mcontrol1
 tst-mcontrol2
@@ -206,6 +221,10 @@ stg-squall1
 stg-statler1
 stg-waldorf1
 
+[stage-mexec]
+stg-mexec1
+stg-mexec2
+
 [stage-wheel]
 stg-haproxy1
 stg-haproxy2
@@ -227,6 +246,14 @@ stg-elastic1
 stg-elastic2
 stg-elastic3
 stg-mongo1
+
+[prod-mexec]
+aus-mexec[7:12]
+
+[mexec:children]
+qa-mexec
+stage-mexec
+prod-mexec
 
 [ck]
 ut.eclipsing.com
