@@ -247,48 +247,63 @@ stg-elastic2
 stg-elastic3
 stg-mongo1
 
+[qa-mcontrol]
+qa-mcontrol[1:3]
+
+[stage-mcontrol]
+stg-mcontrol[1:3]
+
+[prod-mcontrol]
+aus-mcontrol[1:3]
+
 [prod-mexec]
 aus-mexec[7:12]
 
 [mexec:children]
+prod-mexec
 qa-mexec
 stage-mexec
-prod-mexec
+
+[mcontrol:children]
+prod-mcontrol
+qa-mcontrol
+stage-mcontrol
 
 [ck]
-ut.eclipsing.com
 cowboy.eclipsing.com
+ut.eclipsing.com
 
 [ck:vars]
 ansible_ssh_user=root
 
 [ww]
+beeper.solid-constructs.com
+dns.bybent.com
+hidden.bybent.com
+mil.bybent.com
 rubyhacker.com
 vpn.buffalobillpbx.com ansible_ssh_host=23.21.107.28
-mil.bybent.com
-hidden.bybent.com
-dns.bybent.com
-beeper.solid-constructs.com
 
 [ww:vars]
 ansible_ssh_user=root
 
 [rn]
-tms-[1:2].rapidnotify.com
-gt-1.rapidnotify.com
+backup.rapidnotify.com
 ca-db-rep-[4:6].rapidnotify.com
-us-db-rep-[6:8].rapidnotify.com
+eastern-backup.rapidnotify.com
+excel-1.rapidnotify.com
+excel-2.rapidnotify.com
+gt-1.rapidnotify.com
+source.rapidnotify.com
+tms-[1:2].rapidnotify.com
 ts-dbii.rapidnotify.com
 ts-ww.rapidnotify.com
+us-db-rep-[6:8].rapidnotify.com
 us-web-server-2.rapidnotify.com
-backup.rapidnotify.com
-eastern-backup.rapidnotify.com
 western-backup.rapidnotify.com
-source.rapidnotify.com
 
-[rn-offline]
-monica.rapidnotify.com
-test-call-accepter.rapidnotify.com
+[rn-windows]
+mapupload.rapidnotify.com
 
 [rn:vars]
 ansible_ssh_user=root

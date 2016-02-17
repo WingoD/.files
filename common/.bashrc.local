@@ -74,17 +74,9 @@ optionally_pathmunge $HOME/JetBrains/RubyMine-7.1.4/bin
 # TODO look for this
 complete -C  /usr/bin/aws_completer aws
 
-if ! lsattr $HOME/.bash_history | awk '{print $1}' | grep -q a
-then
-  if [ -n "$PS1" ]
-  then
-    echo "Bash history file is not protected against accidental deletion"
-  fi
-fi
 
 pathmunge $HOME/idea-IU/bin after
 
-optionally_source $HOME/.bashrc.indeed
 
 # Setup python virtualenv and virt env wrappers
 mkdir -p $HOME/.virtualenvs
@@ -148,5 +140,10 @@ then
     TERM=xterm-256color
   fi
   complete -F _known_hosts rtat
+  if ! lsattr $HOME/.bash_history | awk '{print $1}' | grep -q a
+  then
+      echo "Bash history file is not protected against accidental deletion"
+  fi
+  optionally_source $HOME/.bashrc.indeed
 fi
 
