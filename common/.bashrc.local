@@ -38,7 +38,7 @@ optionally_source $HOME/.rvm/scripts/rvm
 
 # source any *.sh files in ~/.bashrc.d
 shopt -s nullglob
-for i in ~/.bashrc.d/*.sh
+for i in ~/.bashrc.d/*.sh ~/.bashrc.d/*.bash
 do
   . $i
 done
@@ -62,6 +62,7 @@ fi
 optionally_source $HOME/.bashrc.local.env
 optionally_source /usr/local/share/bash-completion/bash_completion
 optionally_source /opt/local/etc/profile.d/bash_completion.sh
+optionally_source /home/wwalker/git/ansible-completion/ansible-completion.bash
 
 # Source local definitions
 optionally_source $HOME/.bashrc.local.`hostname` $HOME/.bashrc.local.`hostname | awk -F . '{print $1}'`

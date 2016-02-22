@@ -248,7 +248,7 @@ stg-elastic3
 stg-mongo1
 
 [qa-mcontrol]
-qa-mcontrol[1:3]
+tst-mcontrol[1:3]
 
 [stage-mcontrol]
 stg-mcontrol[1:3]
