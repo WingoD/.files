@@ -238,6 +238,9 @@ exec pidgin
 exec skype
 
 # Wayne's changes
+bindsym $mod+X exec xrandr-invert-colors
+bindsym $mod+J exec xrandr-invert-colors -s 1
+bindsym $mod+K exec xrandr-invert-colors -s 0
 bindsym Shift+$alt+Tab focus left
 bindsym $alt+Tab focus right
 bindsym Control+Shift+$mod+Left move workspace to output left
