@@ -118,7 +118,7 @@ set $workspace0 "  0   "
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2; exec invert_colors_osx
+bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
@@ -247,6 +247,8 @@ bindsym Control+Shift+$mod+Left move workspace to output left
 bindsym Control+Shift+$mod+Right move workspace to output right
 bindsym Control+Shift+$mod+Down move workspace to output down
 bindsym Control+Shift+$mod+Up move workspace to output up
+bindsym $mod+I exec invert_colors_osx
+bindsym $alt+F4 kill
 
 show_marks yes
 
