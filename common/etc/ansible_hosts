@@ -302,6 +302,7 @@ ca-db-rep-[4:6].rapidnotify.com
 eastern-backup.rapidnotify.com
 excel-1.rapidnotify.com
 excel-2.rapidnotify.com
+excel-3.rapidnotify.com
 gt-1.rapidnotify.com
 source.rapidnotify.com
 tms-[1:2].rapidnotify.com
@@ -310,6 +311,16 @@ ts-ww.rapidnotify.com
 us-db-rep-[6:8].rapidnotify.com
 us-web-server-2.rapidnotify.com
 western-backup.rapidnotify.com
+
+[rn-call-servers]
+excel-1.rapidnotify.com
+excel-2.rapidnotify.com
+excel-3.rapidnotify.com
+gt-1.rapidnotify.com
+tms-1.rapidnotify.com
+ts-dbii.rapidnotify.com
+ts-ww.rapidnotify.com
+
 
 [rn-windows]
 mapupload.rapidnotify.com
