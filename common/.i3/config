@@ -47,6 +47,7 @@ bindsym Control+$alt+t exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Control+q kill
+bindsym $alt+Control+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
