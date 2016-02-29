@@ -67,6 +67,7 @@ optionally_source /home/wwalker/git/ansible-completion/ansible-completion.bash
 # Source local definitions
 optionally_source $HOME/.bashrc.local.`hostname` $HOME/.bashrc.local.`hostname | awk -F . '{print $1}'`
 
+optionally_pathmunge $HOME/git-home/bin
 optionally_pathmunge $HOME/ibin
 optionally_pathmunge /opt/depot/ruby-*/bin
 optionally_pathmunge /usr/local/aws/bin

@@ -39,7 +39,6 @@ tst-bigsvc1
 tst-bigsvc2
 tst-bridge1
 tst-ctrl1
-tst-devops1
 tst-devops2
 tst-dradis1
 tst-dradis2
@@ -134,6 +133,7 @@ tst-zk3
 [qa-mexec]
 tst-mexec3
 tst-mexec4
+tst-devops1
 
 [qa-wheel]
 tst-mcontrol1
@@ -203,7 +203,6 @@ stg-mcontrol1
 stg-mcontrol2
 stg-mcontrol3
 stg-mexec1
-stg-mexec2
 stg-ndx1
 stg-ndx3
 stg-ndx4
@@ -240,6 +239,7 @@ stg-app1
 stg-app3
 stg-log3
 stg-svc1
+stg-mexec2
 
 [stage-noprivs]
 stg-elastic1
