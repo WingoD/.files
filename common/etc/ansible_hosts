@@ -297,6 +297,8 @@ vpn.buffalobillpbx.com ansible_ssh_host=23.21.107.28
 ansible_ssh_user=root
 
 [rn]
+ansible.rapidnotify.com
+call-server-test-1.rapidnotify.com ansible_ssh_host=104.131.78.250
 backup.rapidnotify.com
 ca-db-rep-[4:6].rapidnotify.com
 eastern-backup.rapidnotify.com
