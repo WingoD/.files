@@ -112,11 +112,6 @@ then
     eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
   fi
 
-  optionally_source /usr/share/doc/git/contrib/completion/git-prompt.sh
-  optionally_source /usr/share/doc/git/contrib/completion/git-completion.bash
-
-  optionally_source /usr/share/doc/git-core-doc/contrib/completion/git-prompt.sh
-  optionally_source /usr/share/doc/git-core-doc/contrib/completion/git-completion.bash
 
   optionally_pathmunge $HOME/vim-*/bin /usr/local/vim-*/bin /usr/local/vim/bin
 
