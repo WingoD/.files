@@ -313,6 +313,7 @@ ts-ww.rapidnotify.com
 us-db-rep-[6:8].rapidnotify.com
 us-web-server-2.rapidnotify.com
 western-backup.rapidnotify.com
+build-c7.rapidnotify.com
 
 [rn-call-servers]
 excel-1.rapidnotify.com
@@ -323,6 +324,7 @@ tms-1.rapidnotify.com
 ts-dbii.rapidnotify.com
 ts-ww.rapidnotify.com
 
+rn-customs]
 
 [rn-windows]
 mapupload.rapidnotify.com
