@@ -133,7 +133,6 @@ tst-zk3
 [qa-mexec]
 tst-mexec3
 tst-mexec4
-tst-devops1
 
 [qa-wheel]
 tst-mcontrol1
