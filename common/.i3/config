@@ -44,6 +44,8 @@ floating_modifier $alt
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym Control+$alt+t exec i3-sensible-terminal
+bindsym Control+$alt+$mod+t split h; exec i3-sensible-terminal
+bindsym Shift+Control+$alt+$mod+t split v; exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Control+q kill
@@ -274,4 +276,17 @@ bindsym Control+$alt+7 [con_mark="7"] focus
 bindsym Control+$alt+8 [con_mark="8"] focus
 bindsym Control+$alt+9 [con_mark="9"] focus
 bindsym Control+$alt+0 [con_mark="0"] focus
+
+bindsym Control+$alt+$mod+1 split h; focus parent; mark "target"; [con_mark="1"] move window to mark "target"
+bindsym Control+$alt+$mod+2 split h; focus parent; mark "target"; [con_mark="2"] move window to mark "target"
+bindsym Control+$alt+$mod+3 split h; focus parent; mark "target"; [con_mark="3"] move window to mark "target"
+bindsym Control+$alt+$mod+4 split h; focus parent; mark "target"; [con_mark="4"] move window to mark "target"
+bindsym Control+$alt+$mod+5 split h; focus parent; mark "target"; [con_mark="5"] move window to mark "target"
+bindsym Control+$alt+$mod+6 split h; focus parent; mark "target"; [con_mark="6"] move window to mark "target"
+bindsym Control+$alt+$mod+7 split h; focus parent; mark "target"; [con_mark="7"] move window to mark "target"
+bindsym Control+$alt+$mod+8 split h; focus parent; mark "target"; [con_mark="8"] move window to mark "target"
+bindsym Control+$alt+$mod+9 split h; focus parent; mark "target"; [con_mark="9"] move window to mark "target"
+bindsym Control+$alt+$mod+0 split h; focus parent; mark "target"; [con_mark="0"] move window to mark "target"
+
+
 workspace_layout tabbed
