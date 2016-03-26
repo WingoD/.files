@@ -28,7 +28,8 @@ else
 fi
 export VISUAL
 export EDITOR
-TERMINAL=urxvt256c
+#TERMINAL=urxvt256c
+TERMINAL=xterm
 export TERMINAL
 
 # need to source this before I rewrite pushd

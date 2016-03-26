@@ -20,7 +20,7 @@ set $alt Mod1
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -203,7 +203,7 @@ bar {
 
 exec --no-startup-id "/usr/bin/xcompmgr -c"
 
-exec --no-startup-id "/usr/bin/feh --bg-fill /home/dwingo/keyboard-layer1.png"
+exec --no-startup-id "/usr/bin/feh --bg-fill /home/dwingo/hex.jpg"
 
 # Wayne changes
 client.focused        #4c7899 #6688aa #ffffff #2e9ef4
