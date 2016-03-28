@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for j in stg tst aus
+for j in stg tst aus iad lon ord sjc
 do
   for i in 1 2 3
   do
@@ -10,6 +10,7 @@ do
     VAULT_ADDR="https://$j-mcontrol$i:8200"
     export VAULT_ADDR
     vault status  | egrep 'Leader|Mode'
+    #ssh-copy-id $j-mcontrol$i
     ssh $j-mcontrol$i 'ps aux' | egrep '[v]ault'
     echo -en "Ports in use\t"
     ssh $j-mcontrol$i 'netstat -an' | egrep '8200' | wc -l
