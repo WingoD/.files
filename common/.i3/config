@@ -224,11 +224,12 @@ client.unfocused        #333333 #666666 #cccccc #292d2e
 #for_window [window_role="pop-up"] floating enable
 #for_window [window_role="buddy_list"] floating enable, move scratchpad, scratchpad show;
 #for_window [window_role="conversation"] floating enable, move scratchpad, scratchpad show;
-for_window [class="google-chrome"] move container to workspace $workspace1; floating disable
+#for_window [title="Hangouts"] move container to workspace $workspace3
+#for_window [class="google-chrome"] floating disable
 #for_window [class="URxvt"] move container to workspace $workspace1; floating disable
-for_window [class="Pidgin"] move container to workspace $workspace1; floating disable
-for_window [class="Skype"] move container to workspace $workspace1; floating disable
-for_window [class="Thunderbird"] move container to workspace $workspace1; floating disable
+for_window [class="Pidgin"] floating disable
+for_window [class="Skype"] floating disable
+for_window [class="Thunderbird"] floating disable
 #bindsym $mod+backslash [instance="skype"] scratchpad show;
 bindsym $mod+backslash scratchpad show;
 

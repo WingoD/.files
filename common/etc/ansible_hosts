@@ -246,14 +246,34 @@ stg-elastic2
 stg-elastic3
 stg-mongo1
 
-[prod]
+[aus]
 aus-mcontrol[1:3]
 aus-mexec[7:12]
+
+[iad]
+iad-mcontrol[1:3]
+iad-mexec[1:2]
+
+[lon]
+lon-mcontrol[1:3]
+lon-mexec[1:2]
+
+[sjc]
+sjc-mcontrol[1:3]
+sjc-mexec[1:2]
+
+[ord]
+ord-mcontrol[1:3]
+ord-mexec[1:2]
 
 [indeed:children]
 qa
 stage
-prod
+aus
+iad
+sjc
+ord
+lon
 
 [qa-mcontrol]
 tst-mcontrol[1:3]
@@ -261,19 +281,43 @@ tst-mcontrol[1:3]
 [stage-mcontrol]
 stg-mcontrol[1:3]
 
-[prod-mcontrol]
+[aus-mcontrol]
 aus-mcontrol[1:3]
 
-[prod-mexec]
+[aus-mexec]
 aus-mexec[7:12]
 
+[lon-mcontrol]
+lon-mcontrol[1:3]
+
+[lon-mexec]
+lon-mexec[1:2]
+
+[sjc-mcontrol]
+sjc-mcontrol[1:3]
+
+[sjc-mexec]
+sjc-mexec[1:2]
+
+[ord-mcontrol]
+ord-mcontrol[1:3]
+
+[ord-mexec]
+ord-mexec[1:2]
+
+[iad-mcontrol]
+iad-mcontrol[1:3]
+
+[iad-mexec]
+iad-mexec[1:2]
+
 [mexec:children]
-prod-mexec
+aus-mexec
 qa-mexec
 stage-mexec
 
 [mcontrol:children]
-prod-mcontrol
+aus-mcontrol
 qa-mcontrol
 stage-mcontrol
 
