@@ -44,6 +44,33 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'Shougo/vimproc'
 Plugin 'Shougo/vimshell'
 
+" Added on 2016-04-07 from fatih/dot_files/vimrc
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-scriptease'
+Plugin 'rhysd/vim-go-impl'
+Plugin 'moll/vim-bbye'
+Plugin 'mhinz/vim-sayonara'
+Plugin 'itchyny/lightline.vim'
+"Plugin 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'fatih/vim-nginx' , {'for' : 'nginx'}
+Plugin 'fatih/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'SirVer/ultisnips'
+Plugin 'kchmck/vim-coffee-script', {'for' : 'coffee'}
+Plugin 'tomtom/tcomment_vim'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
+Plugin 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
+Plugin 'cespare/vim-toml', {'for' : 'toml'}
+Plugin 'elzr/vim-json', {'for' : 'json'}
+Plugin 'corylanou/vim-present', {'for' : 'present'}
+Plugin 'Raimondi/delimitMate'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'SirVer/ultisnips'
 " Taken out a while back
 "Plugin 'Shougo/neocomplcache'
