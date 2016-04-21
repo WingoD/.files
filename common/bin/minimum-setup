@@ -2,16 +2,19 @@
 
 host=$1
 
-#cssh $1
+#cssh $host
 #set -x
-#ssh-copy-id $1
-#cssh $1
-ssh $1 mkdir -p bin
-scp ~/bin/tat $1:bin/
-scp ~/bin/ilts $1:bin/
-scp ~/Files/rxvt-unicode-256color.infocmp $1:
-ssh $1 tic rxvt-unicode-256color.infocmp
-#ssh $1 sudo yum install -y tmux strace vim-enhanced gpg mutt pxz
-#ssh $1 "echo syntax on >> .vimrc"
-#ssh $1 "echo set bg=dark >> .vimrc"
-scp ~/.tmux.conf $1:
+#ssh-copy-id $host
+#cssh $host
+ssh-copy-id $host
+ssh $host mkdir -p bin
+scp ~/bin/tat ~/bin/ilts ~/bin/minimum-setup $host:bin/
+rsync  ~/Files/{screen,xterm,rxvt-unicode}-256color.infocmp $host:
+for i in screen xterm rxvt-unicode
+do
+  ssh $host tic ${i}-256color.infocmp
+done
+#ssh $host sudo yum install -y tmux strace vim-enhanced gpg mutt pxz
+#ssh $host "echo syntax on >> .vimrc"
+#ssh $host "echo set bg=dark >> .vimrc"
+scp ~/.tmux.conf $host:

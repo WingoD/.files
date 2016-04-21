@@ -1,6 +1,7 @@
 #!/bin/bash
 
-for i in tst stg aus
+datacenters=(tst stg aus iad lon ord sjc)
+for i in "${datacenters[@]}"
 do
   ssh $i-mcontrol1 'consul members | grep serv'
 done

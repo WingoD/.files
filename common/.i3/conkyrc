@@ -22,7 +22,7 @@ pad_percents 2
 
 TEXT
 [{ "full_text" : " " },
- { "full_text" : "CPU [${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4}]%" },
+ { "full_text" : "CPU [${cpu cpu1} + ${cpu cpu2} + ${cpu cpu3} + ${cpu cpu4}]%" },
  { "full_text" : "RAM $memeasyfree/$memmax" },
  { "full_text" : "Swap $swapfree/$swapmax" },
  { "full_text" : "sda: R ${diskio_read /dev/sda}/s W ${diskio_write /dev/sda}/s" },
