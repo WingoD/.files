@@ -68,7 +68,7 @@ endif
 "source ~/.vimrc.omnicomplete
 "source ~/.vimrc.neocachecomplete
 source ~/.vimrc.popup_menu
-source ~/.vimrc.golang
+"source ~/.vimrc.golang
 "source ~/.vimrc.fatih
 source ~/.vimrc.ctrlp-funky
 
