@@ -73,7 +73,6 @@ hunspell-en-GB \
 hyphen \
 hyphen-en \
 iptraf-ng \
-kde-runtime-docs \
 kernel \
 kernel-debug-devel \
 kernel-devel \
@@ -184,10 +183,8 @@ python-fedwatch \
 python-flask \
 python-gevent \
 python-glanceclient \
-python-greenlet \
 python-gunicorn \
 python-httplib2 \
-python-iso8601 \
 python-itsdangerous \
 python-jinja2 \
 python-jsonpatch \
@@ -202,7 +199,6 @@ python-pip \
 python-prettytable \
 python-pyasn1 \
 python-redis \
-python-rsa \
 python-sqlalchemy \
 python-telepathy \
 python-warlock \
@@ -254,10 +250,11 @@ dnf install -y hipchat
 service ntpd restart
 chkconfig ntpd on
 
+GO=go1.6.linux-amd64.tar.gz
 if [[ ! -d /usr/local/go ]]
 then
-  wget https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
-  tar -C /usr/local -xzf go1.4.1.linux-amd64.tar.gz
+  wget https://storage.googleapis.com/golang/$GO
+  tar -C /usr/local -xzf $GO
 fi
 
 systemctl enable mariadb
