@@ -19,6 +19,10 @@ ssh -M -N -f \
   -L 127.0.0.1:8016:127.0.0.1:7016 \
   ut.eclipsing.com
 
+ssh -M -N -f \
+  -R 127.0.0.1:$hp:127.0.0.1:22 \
+  ut.eclipsing.com
+
   #-R 127.0.0.1:$MY_REMOTE_RAILS_PORT:127.0.0.1:3000 \
   #-R 127.0.0.1:$hp:127.0.0.1:22 \
 
