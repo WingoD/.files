@@ -86,3 +86,9 @@ set exrc
 au BufRead,BufNewFile *.fls        set ft=fls
 " Make buffer selection easy with :b <tab>
 set wildchar=<Tab> wildmenu wildmode=full
+
+"turn off all beeping and flashing
+set noerrorbells
+set visualbell
+set t_vb=
+
