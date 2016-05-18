@@ -95,22 +95,18 @@ optionally_pathmunge $GOPATH/bin
 # Groovy version manager
 optionally_source $HOME/.gvm/bin/gvm-init.sh
 
-# GPG needs this?
-GPG_TTY=`tty`
-export GPG_TTY
-
-# Setup up ssh and gpg agents
-#gpg-agent --daemon > /dev/null 2>&1
-#eval `keychain --agents gpg --eval --quiet`
-#eval `keychain --agents ssh --eval --quiet`
 
 if [[ -n "$PS1" ]]
 then
   [[ -n "$DISPLAY" ]] && setxkbmap -option caps:none
   # In interactive shells, import the ssh keys if they are not alread
-#  if [ -f /usr/bin/keychain ]; then
-#    eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
-#  fi
+  if [ -f /usr/bin/keychain ]; then
+    eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
+  fi
+  # GPG needs this?
+  GPG_TTY=`tty`
+  export GPG_TTY
+  gpg-agent --daemon > /dev/null 2>&1
 
 
   optionally_pathmunge $HOME/vim/bin $HOME/vim-*/bin /usr/local/vim-*/bin /usr/local/vim/bin
