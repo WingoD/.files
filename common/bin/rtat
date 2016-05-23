@@ -2,6 +2,12 @@
 
 name=${1%%.*}
 
+# If in tmux, do we already have a local window for this host?
+#if [[ $TMUX ]] && tmux select-window -t $name
+#then
+#  exit 0
+#fi
+
 if [[ $TMUX ]]
 then
   if [[ $TMUX_PANE ]]

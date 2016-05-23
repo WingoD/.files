@@ -65,6 +65,7 @@ if &diff
 "  endfunction
 endif
 
+let g:ctrlp_max_files = 100000
 "source ~/.vimrc.omnicomplete
 "source ~/.vimrc.neocachecomplete
 source ~/.vimrc.popup_menu
