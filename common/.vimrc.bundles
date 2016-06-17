@@ -71,6 +71,15 @@ Plugin 'corylanou/vim-present', {'for' : 'present'}
 Plugin 'Raimondi/delimitMate'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'christoomey/vim-tmux-navigator'
+
+" Added 2016-05-23
+"Plugin 'asenac/vim-opengrok'
+Plugin 'rodjek/vim-puppet'
+
+
+
+
+
 "Plugin 'SirVer/ultisnips'
 " Taken out a while back
 "Plugin 'Shougo/neocomplcache'
