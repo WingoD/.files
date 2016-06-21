@@ -1,13 +1,13 @@
 #!/bin/bash
 
-for j in stg tst aus iad lon ord sjc
+
+
+for j in {aus,hkg,iad,lon,ord,sjc,stg,syd,tst}-mcontrol{1,2,3} hwk-mcontrol{1,2,3}.hwkprod inf-mcontrol{1,2,3}.inf nan-mcontrol{1,2,3}.nan sao-mcontrol{1,2,3}.saoprod
 do
-  for i in 1 2 3
-  do
-    echo $j-mcontrol$i
+    echo $j
     VAULT_SKIP_VERIFY=1
     export VAULT_SKIP_VERIFY
-    VAULT_ADDR="https://$j-mcontrol$i:8200"
+    VAULT_ADDR="https://$j:8200"
     export VAULT_ADDR
     vault status  | egrep 'Leader|Mode'
     #ssh-copy-id $j-mcontrol$i
@@ -17,4 +17,3 @@ do
     # ssh $j-mcontrol$i 'vault status' | egrep 'Leader|Mode'
     # ssh tst-mcontrol$i 'df -hlP /usr /var'
   done
-done
