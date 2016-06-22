@@ -36,6 +36,8 @@ autocorr-en \
 avahi-tools \
 binutils \
 clucene-contribs-lib \
+conky \
+conky-manager \
 dkms \
 docker-io \
 docker-io-devel \
@@ -73,6 +75,11 @@ hunspell-en-GB \
 hyphen \
 hyphen-en \
 iptraf-ng \
+i3 \
+i3-doc \
+i3-ipc \
+i3lock \
+i3status \
 kernel \
 kernel-debug-devel \
 kernel-devel \
@@ -178,7 +185,6 @@ python-blinker \
 python-dateutil \
 python-devel \
 python-docker-py \
-python-docker-registry-core \
 python-fedwatch \
 python-flask \
 python-gevent \
