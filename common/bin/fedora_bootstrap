@@ -1,0 +1,33 @@
+sudo dnf install vim-enhanced strace xterm git tmux
+# get (otr create) an ssh key
+rsync -avPHx ut.eclipsing.com:.ssh .
+# ssh-keygen -t rsa -b 4096
+# cat ~/.ssh/id_rsa.pub
+# add key to github.com
+
+cd ~
+git clone git@github.com:ingydotnet/....git
+cd ~/...
+
+cat <EOF > conf
+dots:
+- path: dot-files/common
+EOF
+
+cd ~/.../src
+git clone git@github.com:wwalker/dot-files 
+
+mkdir ~/bin
+cd ~/bin
+ln ../.../bin/... .
+
+... install
+chmod 600 ~/.ssh/config 
+
+echo ". ~/.bashrc.local >> ~/.bashrc
+
+rsync -avPHx ut.eclipsing.com:.vim ./
+
+tmux
+sudo bin/fedora_fix_all 
+ln -s .../src/dot-files/common ~/....
