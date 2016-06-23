@@ -32,5 +32,6 @@ rsync -avPHx ut.eclipsing.com:.vim ~/
 
 ln -s .../src/dot-files/common ~/....
 
+xrdb -m ~/.Xdefaults
 tmux
 sudo bin/fedora_fix_all 
