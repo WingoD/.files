@@ -10,20 +10,11 @@ dnf install -y vim-enhanced tmux xterm python-pip
 dnf update -y
 
 #chattr +a /root/.bash_history /home/wwalker/.bash_history
+pip install --upgrade pip
 pip install awscli PyMySQL
 dnf install -y --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 dnf groupinstall -y "Development and Creative Workstation" "C Development Tools and Libraries" "Development Tools" "RPM Development Tools"
-
-# Fedora golang is broken
-#golang \
-#golang-github-docker-libcontainer \
-#golang-github-docker-libcontainer-devel \
-#golang-github-fsouza-go-dockerclient-devel \
-#golang-github-syndtr-gocapability-devel \
-#golang-pkg-bin-linux-amd64 \
-#golang-pkg-linux-amd64 \
-#golang-src \
 
 dnf install -y \
 ImageMagick-libs \
@@ -49,6 +40,7 @@ emacs \
 emacs-common \
 faad2-libs \
 fedora-dockerfiles \
+fedrepos \
 fence-agents-common \
 fence-agents-docker \
 firebird-libfbembed \
@@ -61,6 +53,7 @@ gimp-libs \
 git \
 glibc-devel \
 glibc-headers \
+golang \
 google-crosextra-caladea-fonts \
 google-crosextra-carlito-fonts \
 gperftools-libs \
