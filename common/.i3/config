@@ -43,7 +43,6 @@ floating_modifier $alt
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym Control+$alt+t exec i3-sensible-terminal
 bindsym Control+$alt+$mod+t split h; exec i3-sensible-terminal
 bindsym Shift+Control+$alt+$mod+t split v; exec i3-sensible-terminal
 
@@ -255,6 +254,13 @@ bindsym Control+Shift+$mod+Down move workspace to output down
 bindsym Control+Shift+$mod+Up move workspace to output up
 bindsym $mod+I exec invert_colors_osx
 bindsym $alt+F4 kill
+
+bindsym $alt+Control+C exec google-chrome
+bindsym $alt+Control+M exec thunderbird
+bindsym $alt+Control+F exec firefox
+bindsym $alt+Control+T exec xterm
+bindsym $alt+Control+S exec skype
+bindsym $alt+Control+P exec pidgin
 
 show_marks yes
 
