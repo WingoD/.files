@@ -1,0 +1,22 @@
+#!/bin/bash
+
+host_is_up(){
+  local host
+  host=$1
+  ping -c 2 $1 > /dev/null 2>&1
+  ping -c 2 $1 > /dev/null 2>&1
+}
+
+if host_is_up 10.90.17.173
+then
+  sudo cp ~/etc/resolv.conf-threatgrid /etc/resolv.conf
+  exit 0
+fi
+
+if host_is_up 8.8.8.8
+then
+  sudo cp ~/etc/resolv.conf-google /etc/resolv.conf
+  exit 0
+fi
+
+echo "can't hit the VPN nor the google DNS servers :-("

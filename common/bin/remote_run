@@ -1,0 +1,13 @@
+#!/bin/bash
+# version 0.0.1
+
+LOCALHISTFILE=/tmp/$USER.history.$$;
+read -d '' RUN << EOF
+export HISTFILE=$LOCALHISTFILE;
+export HISTTIMEFORMAT='%F %T - '
+bash -i;
+awk '{print \"HIST \"\$0}' \$HISTFILE;
+EOF
+ssh $1 "cat > $LOCALHISTFILE" < ~/.bash_history-$1
+ssh -t $1 "$RUN" | tee /tmp/$USER-remote-history
+grep '^HIST ' /tmp/$USER-remote-history | sed -e 's/^HIST //' -e 's///' > ~/.bash_history-$1

@@ -13,9 +13,10 @@ fi
 set -o physical
 #set -o noclobber
 
-TZ=CST6CDT
-TZ=America/Los_Angeles
+#TZ=CST6CDT
+#TZ=America/Los_Angeles
 TZ=America/Chicago
+
 export TZ
 
 export LC_COLLATE=C
@@ -32,6 +33,9 @@ export VISUAL
 export EDITOR
 TERMINAL=xterm
 export TERMINAL
+
+# coreutils developers broke ls
+export QUOTING_STYLE=literal
 
 # need to source this before I rewrite pushd
 optionally_source $HOME/.rvm/scripts/rvm
@@ -139,4 +143,5 @@ then
   fi
   optionally_source $HOME/.bashrc.indeed
 fi
+optionally_source $HOME/.bashrc.threatgrid
 

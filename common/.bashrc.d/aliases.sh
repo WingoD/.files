@@ -3,6 +3,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 alias ls='ls --time-style="+%F %T.%3N"'
+alias guts="grep . | egrep -v '^[[:space:]]*#'"
 
 alias dfl='df -hlP | egrep "^(/dev|Filesystem)"'
 alias utcdate="TZ=UTC date +%FT%T"
@@ -23,6 +24,17 @@ alias jql='jq -S -C . | less -r'
 
 alias d='dirs -p'
 pushd() { builtin pushd "$@" > >( sed -e "s/ /\n/g" ); }
+
+hl(){
+  grep "$@" /etc/hosts | grep -v ^#
+}
+
+grh(){
+  local host
+  host=$1
+  shift
+  ssh $host grep "$@" .bash_history
+}
 
 vt(){
   if [[ $TMUX ]]; then tmux rename-window Today; fi

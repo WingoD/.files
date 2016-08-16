@@ -41,6 +41,7 @@ emacs-common \
 faad2-libs \
 fedora-dockerfiles \
 fedrepos \
+feh \
 fence-agents-common \
 fence-agents-docker \
 firebird-libfbembed \
