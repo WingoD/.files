@@ -41,8 +41,8 @@ Plugin 'mattn/webapi-vim'
 Plugin 'tacahiroy/ctrlp-funky'
 
 " Added on 10/27
-Plugin 'Shougo/vimproc'
-Plugin 'Shougo/vimshell'
+"Plugin 'Shougo/vimproc'
+"Plugin 'Shougo/vimshell'
 
 " Added on 2016-04-07 from fatih/dot_files/vimrc
 Plugin 'tpope/vim-dispatch'
@@ -52,7 +52,7 @@ Plugin 'moll/vim-bbye'
 Plugin 'mhinz/vim-sayonara'
 Plugin 'itchyny/lightline.vim'
 "Plugin 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'fatih/vim-nginx' , {'for' : 'nginx'}
 Plugin 'fatih/molokai'
 Plugin 'morhetz/gruvbox'
