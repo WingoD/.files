@@ -1,0 +1,12 @@
+#!/bin/bash
+# vim: ft=sh
+
+for i in /home/pcap/*/*/201?????
+do
+  printf "Start ${i}\n"
+  if [[ ! -f "${i}.tar.xz" ]]
+  then
+    tar cf - $i | dd bs=1M iflag=fullblock | pxz -1 > ${i}.tar.xz
+    printf "Finish ${i}\n"
+  fi
+done

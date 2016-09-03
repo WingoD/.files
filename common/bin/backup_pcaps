@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in excel-2 excel-3 tms-1 gt-1 ts-ww
+do
+    echo $i
+    ~/bin/backup_rn_pcaps $i
+done

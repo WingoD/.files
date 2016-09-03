@@ -1,0 +1,22 @@
+#!/bin/bash
+# vim: ft=sh
+
+LOCK_FILE=/tmp/tshark_today.lck
+if [[ -f $LOCK_FILE ]]
+then
+  echo "lockfile ($LOCK_FILE) present, aborting"
+  exit 1
+fi
+
+echo $$ > $LOCK_FILE
+
+TODAY=`perl -MPOSIX -e 'print strftime("%Y%m%d",localtime(time))'`
+YESTERDAY=`perl -MPOSIX -e 'print strftime("%Y%m%d",localtime(time-86400))'`
+
+for i in /home/pcap /home/excel-2/pcap
+do
+  cd $i
+  find eth0/$TODAY eth1/$TODAY eth0/$YESTERDAY eth1/$YESTERDAY -name '*.pcap' | grep -v empty | grep '2013....-......-\+?1?[2-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-\+?1?[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9].*@' | xargs --no-run-if-empty -n 1 /home/wwalker/bin/tshark_one
+done
+
+/bin/rm $LOCK_FILE
