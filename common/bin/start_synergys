@@ -2,4 +2,4 @@
 
 killall synergys 2> /dev/null
 date >> ~/logs/synergys.log
-synergys -a 127.0.0.1 -f -c ~/etc/synergys.conf < /dev/null >> ~/logs/synergys.log 2>&1 &
+synergys --debug DEBUG2 -a 127.0.0.1 -f -c ~/etc/synergys.conf < /dev/null >> ~/logs/synergys.log 2>&1 &

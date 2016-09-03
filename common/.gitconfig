@@ -38,6 +38,8 @@
 	diff =
 [pack]
 	windowMemory = 3g
+[rebase]
+  instructionFormat = %an - %s
 [merge]
 	tool = vimdiff
 [include]
