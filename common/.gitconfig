@@ -28,6 +28,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
   lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso --all
 	who = shortlog -s --
+  gpu = "!git fetch upstream && git merge upstream/master"
 [github]
 	user = wwalker
 [push]
@@ -42,6 +43,7 @@
   instructionFormat = %an - %s
 [merge]
 	tool = vimdiff
+  keepBackup = false
 [include]
 	path = ~/env/etc/git/aliases
 	path = ~/env/etc/git/general-config

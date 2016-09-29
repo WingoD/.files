@@ -81,6 +81,12 @@ Plugin 'saltstack/salt-vim'
 " Added 2016-08-20
 Plugin 'kablamo/vim-git-log'
 
+" Added 2016-09-16
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'kana/vim-metarw'
+Plugin 'mattn/vim-metarw-gdrive'
+
 
 "Plugin 'SirVer/ultisnips'
 " Taken out a while back

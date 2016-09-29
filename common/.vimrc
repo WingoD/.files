@@ -16,8 +16,8 @@ syntax on
 set nocursorline                " do not highlight current line
 set nonumber
 set shiftwidth=2               " use indents of 2 spaces
-set tabstop=2                  " an indentation every two columns
-set softtabstop=2              " let backspace delete indent
+set tabstop=27                  " an indentation every two columns
+set softtabstop=27              " let backspace delete indent
 set mouse=                 " disable mouse
 set history=10000
 set wrap                      " wrap long lines
