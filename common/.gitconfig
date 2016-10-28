@@ -29,6 +29,7 @@
   lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso --all
 	who = shortlog -s --
   gpu = "!git fetch upstream && git merge upstream/master"
+  gru = "!git fetch upstream && git rebase @{u}"
 [github]
 	user = wwalker
 [push]

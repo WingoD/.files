@@ -93,3 +93,7 @@ set noerrorbells
 set visualbell
 set t_vb=
 
+" thank you PAStheLoD from stack exchange
+highlight nonascii guibg=Red ctermbg=1 term=standout
+au BufReadPost * syntax match nonascii "[^\u0000-\u007F]"
+
