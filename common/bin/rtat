@@ -2,10 +2,17 @@
 
 name=${1%%.*}
 
+# If in tmux, do we already have a local window for this host?
+#if [[ $TMUX ]] && tmux select-window -t $name
+#then
+#  exit 0
+#fi
+
 if [[ $TMUX ]]
 then
   if [[ $TMUX_PANE ]]
   then
+    OLD_WIN_NAME=$(tmux list-windows | grep \\* | sed -e 's/^[0-9][0-9]*: //' -e 's/\*.*//')
     tmux rename-window -t $TMUX_PANE $name
   else
     tmux rename-window $name
@@ -13,4 +20,16 @@ then
 fi
 
 xtb $1
+set +e
 ssh -A -t $1 bin/tat
+xtb bash
+
+if [[ $TMUX ]]
+then
+  if [[ $TMUX_PANE ]]
+  then
+    tmux rename-window -t $TMUX_PANE $OLD_WIN_NAME
+  else
+    tmux rename-window $OLD_WIN_NAME
+  fi
+fi

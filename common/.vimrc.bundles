@@ -24,7 +24,7 @@ Plugin 'vim-scripts/dbext.vim'
 Plugin 'mileszs/ack.vim'
 
 Plugin 'Lokaltog/vim-powerline'
-"Plugin 'Shougo/neocomplete.vim.git'
+Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'bling/vim-airline'
 
 " Added on 6/30
@@ -41,8 +41,52 @@ Plugin 'mattn/webapi-vim'
 Plugin 'tacahiroy/ctrlp-funky'
 
 " Added on 10/27
-Plugin 'Shougo/vimproc'
-Plugin 'Shougo/vimshell'
+"Plugin 'Shougo/vimproc'
+"Plugin 'Shougo/vimshell'
+
+" Added on 2016-04-07 from fatih/dot_files/vimrc
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-scriptease'
+Plugin 'rhysd/vim-go-impl'
+Plugin 'moll/vim-bbye'
+Plugin 'mhinz/vim-sayonara'
+Plugin 'itchyny/lightline.vim'
+"Plugin 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+"Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'fatih/vim-nginx' , {'for' : 'nginx'}
+Plugin 'fatih/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'SirVer/ultisnips'
+Plugin 'kchmck/vim-coffee-script', {'for' : 'coffee'}
+Plugin 'tomtom/tcomment_vim'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
+Plugin 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
+Plugin 'cespare/vim-toml', {'for' : 'toml'}
+Plugin 'elzr/vim-json', {'for' : 'json'}
+Plugin 'corylanou/vim-present', {'for' : 'present'}
+Plugin 'Raimondi/delimitMate'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Added 2016-05-23
+"Plugin 'asenac/vim-opengrok'
+Plugin 'rodjek/vim-puppet'
+
+Plugin 'saltstack/salt-vim'
+
+" Added 2016-08-20
+Plugin 'kablamo/vim-git-log'
+
+" Added 2016-09-16
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'kana/vim-metarw'
+Plugin 'mattn/vim-metarw-gdrive'
+
 
 "Plugin 'SirVer/ultisnips'
 " Taken out a while back

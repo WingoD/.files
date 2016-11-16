@@ -1,0 +1,13 @@
+#!/bin/bash
+
+hostlist=$1
+shift
+
+target=$2
+shift
+
+for i in $(ansible $hostlist --list-hosts)
+do
+  echo $i
+  rsync -avPHxz "$@" ${i}:$target
+done

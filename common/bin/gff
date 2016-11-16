@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for i in ~/projects ~/indeed ~/git ~/golang_workspace
+do
+  for j in $(find $i | grep $1 | grep .git/config$ | sed -e 's#/\.git/config$##')
+  do
+    echo $j
+    ( cd $j && git fetch && git rev-parse --abbrev-ref origin/HEAD && git branch | grep \\\*)
+  done
+done
+

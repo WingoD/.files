@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(sudo puppet agent -t 2>&1) | /home/wwalker/bin/ilts > ~/puppet-$(date +%F-%T).log

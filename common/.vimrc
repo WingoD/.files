@@ -23,6 +23,7 @@ set history=10000
 set wrap                      " wrap long lines
 set expandtab
 set ruler
+set hlsearch
 
 " These 4 lines break left and right arrows in insert mode:
 "imap OA <ESC>ki
@@ -68,6 +69,7 @@ endif
 "source ~/.vimrc.neocachecomplete
 source ~/.vimrc.popup_menu
 source ~/.vimrc.go
+let g:ctrlp_max_files = 100000
 source ~/.vimrc.ctrlp-funky
 
 "source ~/.vimrc.confirm_quit
@@ -82,3 +84,14 @@ set nosecure
 set exrc
 
 au BufRead,BufNewFile *.fls        set ft=fls
+" Make buffer selection easy with :b <tab>
+set wildchar=<Tab> wildmenu wildmode=full
+
+"turn off all beeping and flashing
+set noerrorbells
+set visualbell
+set t_vb=
+
+" thank you PAStheLoD from stack exchange
+highlight nonascii guibg=Red ctermbg=1 term=standout
+au BufReadPost * syntax match nonascii "[^\u0000-\u007F]"

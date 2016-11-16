@@ -1,0 +1,25 @@
+#!/bin/bash
+
+host_is_up(){
+  local host
+  host=$1
+  ping -c 2 $1 > /dev/null 2>&1
+  ping -c 2 $1 > /dev/null 2>&1
+}
+
+fix_resolution(){
+  host=$1
+  file=$2
+  if host_is_up $host
+  then
+    sudo cp $file /etc/resolv.conf
+    exit 0
+  fi
+}
+
+fix_resolution 10.90.17.173 $HOME/etc/resolv.conf-threatgrid
+fix_resolution 8.8.8.8 $HOME/etc/resolv.conf-google
+
+echo "can't hit the INT VPN DNS servers nor the google DNS servers :-("
+echo "changing nothing"
+

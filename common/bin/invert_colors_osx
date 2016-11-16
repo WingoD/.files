@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh 192.168.157.1 /usr/bin/osascript invert_colors.applescript

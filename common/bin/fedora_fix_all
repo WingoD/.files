@@ -10,20 +10,11 @@ dnf install -y vim-enhanced tmux xterm python-pip
 dnf update -y
 
 #chattr +a /root/.bash_history /home/wwalker/.bash_history
+pip install --upgrade pip
 pip install awscli PyMySQL
 dnf install -y --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 dnf groupinstall -y "Development and Creative Workstation" "C Development Tools and Libraries" "Development Tools" "RPM Development Tools"
-
-# Fedora golang is broken
-#golang \
-#golang-github-docker-libcontainer \
-#golang-github-docker-libcontainer-devel \
-#golang-github-fsouza-go-dockerclient-devel \
-#golang-github-syndtr-gocapability-devel \
-#golang-pkg-bin-linux-amd64 \
-#golang-pkg-linux-amd64 \
-#golang-src \
 
 dnf install -y \
 ImageMagick-libs \
@@ -36,6 +27,8 @@ autocorr-en \
 avahi-tools \
 binutils \
 clucene-contribs-lib \
+conky \
+conky-manager \
 dkms \
 docker-io \
 docker-io-devel \
@@ -47,6 +40,8 @@ emacs \
 emacs-common \
 faad2-libs \
 fedora-dockerfiles \
+fedrepos \
+feh \
 fence-agents-common \
 fence-agents-docker \
 firebird-libfbembed \
@@ -59,6 +54,7 @@ gimp-libs \
 git \
 glibc-devel \
 glibc-headers \
+golang \
 google-crosextra-caladea-fonts \
 google-crosextra-carlito-fonts \
 gperftools-libs \
@@ -73,7 +69,11 @@ hunspell-en-GB \
 hyphen \
 hyphen-en \
 iptraf-ng \
-kde-runtime-docs \
+i3 \
+i3-doc \
+i3-ipc \
+i3lock \
+i3status \
 kernel \
 kernel-debug-devel \
 kernel-devel \
@@ -143,6 +143,7 @@ libyaml \
 libyaml-devel \
 lpsolve \
 make \
+mariadb-server \
 maven \
 metacity \
 mjpegtools-libs \
@@ -154,6 +155,7 @@ mythes \
 mythes-en \
 nginx \
 ngrep \
+nmap \
 ntp \
 ntpdate \
 opencore-amr \
@@ -178,15 +180,12 @@ python-blinker \
 python-dateutil \
 python-devel \
 python-docker-py \
-python-docker-registry-core \
 python-fedwatch \
 python-flask \
 python-gevent \
 python-glanceclient \
-python-greenlet \
 python-gunicorn \
 python-httplib2 \
-python-iso8601 \
 python-itsdangerous \
 python-jinja2 \
 python-jsonpatch \
@@ -201,7 +200,6 @@ python-pip \
 python-prettytable \
 python-pyasn1 \
 python-redis \
-python-rsa \
 python-sqlalchemy \
 python-telepathy \
 python-warlock \
@@ -253,12 +251,17 @@ dnf install -y hipchat
 service ntpd restart
 chkconfig ntpd on
 
+GO=go1.6.linux-amd64.tar.gz
 if [[ ! -d /usr/local/go ]]
 then
-  wget https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz
-  tar -C /usr/local -xzf go1.4.1.linux-amd64.tar.gz
+  wget https://storage.googleapis.com/golang/$GO
+  tar -C /usr/local -xzf $GO
 fi
 
+systemctl enable mariadb
+systemctl start mariadb
+systemctl enable sshd
+systemctl start sshd
 #cd /etc/yum.repos.d/
 #wget http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 #yum install VirtualBox-4.3.x86_64

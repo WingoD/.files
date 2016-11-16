@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -z "$1" ]]
+then
+  xfconf-query -p /Xft/DPI -c xsettings
+else
+  xfconf-query -p /Xft/DPI -c xsettings -s $1
+fi

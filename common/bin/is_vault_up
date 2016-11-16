@@ -1,11 +1,19 @@
 #!/bin/bash
 
-for j in stg tst
+
+
+for j in {aus,hkg,iad,lon,ord,sjc,stg,syd,tst}-mcontrol{1,2,3} hwk-mcontrol{1,2,3}.hwkprod inf-mcontrol{1,2,3}.inf nan-mcontrol{1,2,3}.nan sao-mcontrol{1,2,3}.saoprod
 do
-for i in 1 2 3
-do
-  echo $j-mcontrol$i
-  ssh $j-mcontrol$i 'vault status' | egrep 'Leader|Mode'
-  # ssh tst-mcontrol$i 'df -hlP /usr /var'
-done
-done
+    echo $j
+    VAULT_SKIP_VERIFY=1
+    export VAULT_SKIP_VERIFY
+    VAULT_ADDR="https://$j:8200"
+    export VAULT_ADDR
+    vault status  | egrep 'Leader|Mode'
+    #ssh-copy-id $j-mcontrol$i
+    #ssh $j-mcontrol$i 'ps aux' | egrep '[v]ault'
+    #echo -en "Ports in use\t"
+    #ssh $j-mcontrol$i 'netstat -an' | egrep '8200' | wc -l
+    # ssh $j-mcontrol$i 'vault status' | egrep 'Leader|Mode'
+    # ssh tst-mcontrol$i 'df -hlP /usr /var'
+  done

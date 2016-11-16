@@ -1,0 +1,10 @@
+#!/bin/bash
+
+hostlist=$1
+shift
+
+for i in $(ansible $hostlist --list-hosts)
+do
+  echo $i
+  ssh -t $i "$@"
+done

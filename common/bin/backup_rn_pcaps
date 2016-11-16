@@ -1,7 +1,7 @@
 #!/bin/bash
 
 eval `keychain --noask --agents ssh --nogui --quiet --eval id_rsa id_dsa`
-nice -n 20 ionice -c 3 /usr/bin/rsync -aHxz root@excel-1.rapidnotify.com:/var/log/pcap/. /home/pcap/. | \
-  tee -a /var/log/backup_rn_pcaps.log | \
+nice -n 20 ionice -c 3 /usr/bin/rsync -aHxz root@$1.rapidnotify.com:/var/log/pcap/. /home/pcap/$1/. | \
+  tee -a /var/log/backup_rn_pcaps/$1.log | \
   egrep -v 'sent [0-9]+ bytes  received [0-9]+ bytes  [0-9]+.[0-9]+ bytes/sec' | \
   egrep -v 'total size is [0-9]+  speedup is [0-9]+.[0-9]+'

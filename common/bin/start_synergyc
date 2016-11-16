@@ -2,4 +2,4 @@
 
 killall synergyc 2> /dev/null
 date >> ~/logs/synergyc.log
-synergyc -f localhost < /dev/null >> ~/logs/synergyc.log 2>&1 &
+synergyc -f 127.0.0.1 < /dev/null >> ~/logs/synergyc.log 2>&1 &

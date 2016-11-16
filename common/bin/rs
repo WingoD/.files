@@ -1,6 +1,8 @@
 #!/bin/bash
 
-while ! ssh $*
-do
-	sleep 1
-done
+if [[ $4 ]]; then
+  test=$4
+else
+  test=True
+fi
+ssh $1-salt-01 sudo salt "'$2'" state.sls "'$3'" test=$test

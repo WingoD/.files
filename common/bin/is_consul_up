@@ -1,9 +1,18 @@
 #!/bin/bash
 
+datacenters=(tst stg aus iad lon ord sjc)
+for i in "${datacenters[@]}"
+do
+  ssh $i-mcontrol1 'consul members | grep serv'
+done
+
+# aus-gensvc2 aus-lrb1 aus-lrb2
 for i in tst-mcontrol1 tst-mcontrol2 tst-mcontrol3 stg-log3 stg-recos1 stg-squall1
 do
+  echo ""
   echo $i
   ssh $i 'consul info' | egrep 'server|leader'
   ssh $i 'df -hlP /usr /var'
   ssh $i 'du -sm /usr/local/consul' 2> /dev/null
+  ssh $i 'ps aux' | grep '/usr/local/bin/[c]onsul'
 done

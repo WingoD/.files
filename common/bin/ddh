@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+if [[ $1 = "lh" ]]
+then
+xrandr --output eDP1 -s 3200x1800 --left-of HDMI1 --auto --output HDMI1 -s 3840x2160 --auto
+fi
+
+if [[ $1 = "l" ]]
+then
+xrandr --output eDP1 -s 3200x1800 --auto --output HDMI1 --off
+fi
+
+if [[ $1 = "h" ]]
+then
+xrandr --output eDP1 --off  --output HDMI1 -s 3840x2160 --auto
+fi

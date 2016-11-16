@@ -2,6 +2,8 @@ HISTCONTROL=ignoreboth
 HISTSIZE=100000
 HISTFILESIZE=100000
 HISTTIMEFORMAT='%F %T - '
+shopt -s histreedit
+shopt -s histverify
 
 if [[ -f $HOME/.bashrc.d/functions.sh ]]
 then
@@ -11,9 +13,10 @@ fi
 set -o physical
 #set -o noclobber
 
-TZ=CST6CDT
-TZ=America/Los_Angeles
+#TZ=CST6CDT
+#TZ=America/Los_Angeles
 TZ=America/Chicago
+
 export TZ
 
 export LC_COLLATE=C
@@ -32,12 +35,15 @@ export EDITOR
 TERMINAL=xterm
 export TERMINAL
 
+# coreutils developers broke ls
+export QUOTING_STYLE=literal
+
 # need to source this before I rewrite pushd
 optionally_source $HOME/.rvm/scripts/rvm
 
 # source any *.sh files in ~/.bashrc.d
 shopt -s nullglob
-for i in ~/.bashrc.d/*.sh
+for i in ~/.bashrc.d/*.sh ~/.bashrc.d/*.bash
 do
   . $i
 done
@@ -60,11 +66,14 @@ fi
 optionally_source $HOME/.bashrc.local.env
 optionally_source /usr/local/share/bash-completion/bash_completion
 optionally_source /opt/local/etc/profile.d/bash_completion.sh
+optionally_source /home/wwalker/git/ansible-completion/ansible-completion.bash
 
 # Source local definitions
 optionally_source $HOME/.bashrc.local.`hostname` $HOME/.bashrc.local.`hostname | awk -F . '{print $1}'`
 
-optionally_pathmunge $HOME/bin
+optionally_pathmunge /usr/local/git/bin
+optionally_pathmunge $HOME/git-home/bin
+optionally_pathmunge $HOME/ibin
 optionally_pathmunge /opt/depot/ruby-*/bin
 optionally_pathmunge /usr/local/aws/bin
 optionally_pathmunge $HOME/JetBrains/RubyMine-7.1.4/bin
@@ -72,9 +81,9 @@ optionally_pathmunge $HOME/JetBrains/RubyMine-7.1.4/bin
 # TODO look for this
 complete -C  /usr/bin/aws_completer aws
 
+
 pathmunge $HOME/idea-IU/bin after
 
-optionally_source $HOME/.bashrc.indeed
 
 # Setup python virtualenv and virt env wrappers
 mkdir -p $HOME/.virtualenvs
@@ -91,26 +100,24 @@ optionally_pathmunge $GOPATH/bin
 # Groovy version manager
 optionally_source $HOME/.gvm/bin/gvm-init.sh
 
-# GPG needs this?
-GPG_TTY=`tty`
-export GPG_TTY
-
-# Setup up ssh and gpg agents
-gpg-agent --daemon > /dev/null 2>&1
-eval `keychain --agents gpg --eval --quiet`
-eval `keychain --agents ssh --eval --quiet`
-
-if [[ -n "$PS1" ]]
-then
-  # In interactive shells, import the ssh keys if they are not alread
-  if [ -f /usr/bin/keychain ]; then
-    eval `keychain --agents ssh --nogui --quiet --eval id_rsa`
-  fi
 
   optionally_source  /usr/share/doc/git-core-doc/contrib/completion/git-completion.bash
   optionally_source  /usr/share/doc/git-core-doc/contrib/completion/git-prompt.sh
 
-  optionally_pathmunge $HOME/vim-*/bin /usr/local/vim-*/bin /usr/local/vim/bin
+if [[ -n "$PS1" ]]
+then
+  [[ -n "$DISPLAY" ]] && setxkbmap -option caps:none
+  # In interactive shells, import the ssh keys if they are not alread
+  if [ -f /usr/bin/keychain ]; then
+    eval `keychain --agents ssh --nogui --quiet --eval id_rsa id_dsa`
+  fi
+  # GPG needs this?
+  GPG_TTY=`tty`
+  export GPG_TTY
+  gpg-agent --daemon > /dev/null 2>&1
+
+
+  optionally_pathmunge $HOME/vim/bin $HOME/vim-*/bin /usr/local/vim-*/bin /usr/local/vim/bin
 
   # Set up prompt for git support
   GIT_PS1_SHOWCOLORHINTS=1
@@ -134,4 +141,11 @@ then
   then
     TERM=xterm-256color
   fi
+  complete -F _known_hosts rtat
+  if ! lsattr $HOME/.bash_history | awk '{print $1}' | grep -q a
+  then
+      echo "Bash history file is not protected against accidental deletion"
+  fi
+  optionally_source $HOME/.bashrc.indeed
 fi
+optionally_source $HOME/.bashrc.threatgrid
